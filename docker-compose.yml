@@ -7,3 +7,5 @@ services:
     ports:
       - "4443:443"
     hostname: rimworld.local
+    volumes:
+      - ./app/:/usr/local/apache2/htdocs
