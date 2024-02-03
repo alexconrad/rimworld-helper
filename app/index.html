@@ -1,0 +1,1106 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="decimal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+<style>
+    .theth {
+        background-color: #e0e0e0 !important;
+        text-align: center;
+    }
+
+    .theOrderMaterialsBy.orderSelected {
+        background-color: #e0e0e0 !important;
+    }
+    .theResult th {
+        background-color: #e0e0e0 !important;
+        white-space: nowrap !important;
+    }
+
+    .slider {
+        position: relative;
+        z-index: 1;
+        height: 18px;
+        margin: 0 40px 0 40px;
+
+    }
+    .slider > .track {
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 5px;
+        background-image: linear-gradient(to right, lightblue , lightcoral);
+        /*background-color: #c6aee7;*/
+        background-color: #f0f0f0;
+    }
+    .slider > .range {
+        position: absolute;
+        z-index: 2;
+        left: 5%;
+        right: 5%;
+        top: 0;
+        bottom: 0;
+        border-radius: 5px;
+        /*background-color: #6200ee;*/
+        background-color: lightgreen;
+        /*background-image: linear-gradient(to right, lightblue , lightcoral);*/
+        /*opacity: 40%;*/
+    }
+
+
+
+</style>
+<script>
+
+    $(document).ready(function() {
+        $("#theCopy").click(function () {
+            saveLink();
+        });
+    });
+
+
+
+
+    function saveLink() {
+        console.log('ops');
+        let data = [];
+        $('[id^=wearme]').each(function () {
+            data.push([
+                parseInt($(this).data('weared-item-id')),
+                parseInt($(this).find('.theMaterial option:selected').val()),
+                parseInt($(this).find('.theQuality option:selected').val()),
+            ]);
+        });
+
+        console.log(JSON.stringify(data));
+        let theData = btoa(JSON.stringify(data));
+        console.log(btoa(JSON.stringify(data)));
+
+        let toCopy = window.location.origin + '' + window.location.pathname + '#' + theData;
+
+
+        try {
+            navigator.clipboard.writeText(toCopy).then(function () {
+                alert('Copied ok.');
+            }, function () {
+                console.log(toCopy);
+                alert('Failure to copy.\nProbably page not loaded via https.\nYou can use console log to get the URLs');
+            });
+        } catch (e) {
+            console.log(toCopy);
+            //https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText
+            alert('Failure to copy.\nProbably page not loaded via https.\nYou can use console log to get the URLs.');
+        }
+
+    }
+
+
+
+</script>
+
+<table class="table table-bordered table-sm">
+    <thead>
+    <tr>
+    <th class="theth text-small" style="width: 220px;">Headgear</th>
+    <th class="theth"  style="width: 220px;">Middle</th>
+    <th class="theth"  style="width: 220px;">Outer</th>
+    <th class="theth" style="max-width: 1450px">Info
+        <button class="btn btn-sm btn-primary btn-sm" id="theCopy" style="padding: 1px !important;font-size: 12px !important;">copy permalink</button>
+    </th>
+    <th class="theth">Result</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td valign="middle" align="center" style="padding: 2px !important;">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="201px" height="135px" viewBox="-0.5 -0.5 201 195">
+                <defs/>
+                <g>
+                    <!-- headgear -->
+                    <ellipse cx="100" cy="85" rx="70" ry="85" fill="#fff3f2" stroke="#ae4132" pointer-events="all"/>
+                    <path id="layer_1_3" data-part-name="right_ear" data-occupied-by="" d="M 170 40 Q 200 40 200 80 Q 200 120 170 120 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+                    <path id="layer_1_2" data-part-name="left_ear" data-occupied-by="" d="M 0 40 Q 30 40 30 80 Q 30 120 0 120 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" transform="rotate(-180,15,80)" pointer-events="all"/>
+                    <ellipse id="layer_1_12" data-part-name="left_eye" data-occupied-by="" cx="70" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <ellipse id="layer_1_13" data-part-name="right_eye" data-occupied-by="" cx="130" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <path id="layer_1_14" data-partn-name="nose" data-occupied-by="" d="M 85 80 L 115 95 L 85 110 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" transform="rotate(-90,100,95)" pointer-events="all"/>
+                    <path id="layer_1_15" data-partn-name="jaw" data-occupied-by="" d="M 80 90 Q 120 90 120 150 Q 120 210 80 210 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" transform="rotate(90,100,150)" pointer-events="all"/>
+                    <path id="layer_1_1" data-partn-name="head" data-occupied-by="" d="M 80 -40 Q 120 -40 120 20 Q 120 80 80 80 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" transform="rotate(-90,100,20)" pointer-events="all"/>
+                    <rect id="layer_1_5" data-partn-name="neck" data-occupied-by="" x="75" y="170" width="50" height="20" rx="4.5" ry="4.5" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+
+                </g>
+            </svg>
+        </td>
+        <td rowspan="3" valign="middle" align="center" style="padding: 2px !important;">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="155px" height="332px" viewBox="-0.5 -0.5 201 432">
+                <defs/>
+                <g>
+                    <ellipse cx="100" cy="85" rx="70" ry="85" fill="#fff3f2" stroke="#ae4132" pointer-events="all"/>
+                    <path id="layer_4_3" data-part-name="right_ear" data-occupied-by="" d="M 170 40 Q 200 40 200 80 Q 200 120 170 120 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+                    <path id="layer_4_2" data-part-name="left_ear" data-occupied-by="" d="M 0 40 Q 30 40 30 80 Q 30 120 0 120 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" transform="rotate(-180,15,80)" pointer-events="all"/>
+                    <ellipse id="layer_4_12" data-part-name="left_eye" data-occupied-by="" cx="70" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <ellipse id="layer_4_13" data-part-name="right_eye" data-occupied-by="" cx="130" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <path id="layer_4_14" data-partn-name="nose" data-occupied-by="" d="M 85 80 L 115 95 L 85 110 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" transform="rotate(-90,100,95)" pointer-events="all"/>
+                    <path id="layer_4_15" data-partn-name="jaw" data-occupied-by="" d="M 80 90 Q 120 90 120 150 Q 120 210 80 210 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" transform="rotate(90,100,150)" pointer-events="all"/>
+                    <path id="layer_4_1" data-partn-name="head" data-occupied-by="" d="M 80 -40 Q 120 -40 120 20 Q 120 80 80 80 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" transform="rotate(-90,100,20)" pointer-events="all"/>
+                    <rect id="layer_4_5" data-partn-name="neck" data-occupied-by="" x="75" y="170" width="50" height="30" rx="4.5" ry="4.5" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <rect id="layer_4_4" data-partn-name="torso" data-occupied-by="" x="40" y="210" width="120" height="110" rx="16.5" ry="16.5" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <rect id="layer_4_6" data-partn-name="left_shoulder" data-occupied-by="" x="20" y="200" width="80" height="40" rx="6" ry="6" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <rect id="layer_4_8" data-partn-name="right_shoulder" data-occupied-by="" x="100" y="200" width="80" height="40" rx="6" ry="6" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <rect id="layer_4_7" data-partn-name="left_arm" data-occupied-by="" x="-45" y="260" width="120" height="20" rx="3" ry="3" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" transform="rotate(-90,15,270)" pointer-events="all"/>
+                    <rect id="layer_4_9" data-partn-name="right_arm" data-occupied-by="" x="125" y="260" width="120" height="20" rx="3" ry="3" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" transform="rotate(-90,185,270)" pointer-events="all"/>
+                    <rect id="layer_4_10" data-partn-name="left_leg" data-occupied-by="" x="-5" y="360" width="120" height="20" rx="3" ry="3" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" transform="rotate(-75,55,370)" pointer-events="all"/>
+                    <rect id="layer_4_11" data-partn-name="right_leg" data-occupied-by="" x="85" y="360" width="120" height="20" rx="3" ry="3" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" transform="rotate(-105,145,370)" pointer-events="all"/>
+                </g>
+            </svg>
+        </td>
+        <td rowspan="3" valign="middle" align="center" style="padding: 2px !important;">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="155px" height="332px" viewBox="-0.5 -0.5 201 432">
+                <defs/>
+                <g>
+                    <ellipse cx="100" cy="85" rx="70" ry="85" fill="#fff3f2" stroke="#ae4132" pointer-events="all"/>
+                    <path id="layer_3_3" data-part-name="right_ear" data-occupied-by="" d="M 170 40 Q 200 40 200 80 Q 200 120 170 120 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+                    <path id="layer_3_2" data-part-name="left_ear" data-occupied-by="" d="M 0 40 Q 30 40 30 80 Q 30 120 0 120 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" transform="rotate(-180,15,80)" pointer-events="all"/>
+                    <ellipse id="layer_3_12" data-part-name="left_eye" data-occupied-by="" cx="70" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <ellipse id="layer_3_13" data-part-name="right_eye" data-occupied-by="" cx="130" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <path id="layer_3_14" data-partn-name="nose" data-occupied-by="" d="M 85 80 L 115 95 L 85 110 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" transform="rotate(-90,100,95)" pointer-events="all"/>
+                    <path id="layer_3_15" data-partn-name="jaw" data-occupied-by="" d="M 80 90 Q 120 90 120 150 Q 120 210 80 210 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" transform="rotate(90,100,150)" pointer-events="all"/>
+                    <path id="layer_3_1" data-partn-name="head" data-occupied-by="" d="M 80 -40 Q 120 -40 120 20 Q 120 80 80 80 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" transform="rotate(-90,100,20)" pointer-events="all"/>
+                    <rect id="layer_3_5" data-partn-name="neck" data-occupied-by="" x="75" y="170" width="50" height="30" rx="4.5" ry="4.5" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <rect id="layer_3_4" data-partn-name="torso" data-occupied-by="" x="40" y="210" width="120" height="110" rx="16.5" ry="16.5" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <rect id="layer_3_6" data-partn-name="left_shoulder" data-occupied-by="" x="20" y="200" width="80" height="40" rx="6" ry="6" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <rect id="layer_3_8" data-partn-name="right_shoulder" data-occupied-by="" x="100" y="200" width="80" height="40" rx="6" ry="6" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                    <rect id="layer_3_7" data-partn-name="left_arm" data-occupied-by="" x="-45" y="260" width="120" height="20" rx="3" ry="3" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" transform="rotate(-90,15,270)" pointer-events="all"/>
+                    <rect id="layer_3_9" data-partn-name="right_arm" data-occupied-by="" x="125" y="260" width="120" height="20" rx="3" ry="3" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" transform="rotate(-90,185,270)" pointer-events="all"/>
+                    <rect id="layer_3_10" data-partn-name="left_leg" data-occupied-by="" x="-5" y="360" width="120" height="20" rx="3" ry="3" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" transform="rotate(-75,55,370)" pointer-events="all"/>
+                    <rect id="layer_3_11" data-partn-name="right_leg" data-occupied-by="" x="85" y="360" width="120" height="20" rx="3" ry="3" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" transform="rotate(-105,145,370)" pointer-events="all"/>
+                </g>
+            </svg>
+        </td>
+        <td rowspan="3" width="100%">
+            <table class="table table-sm table-bordered" style="font-size: 12px !important;">
+                <thead>
+                <th style="width: 0px;"></th>
+                <th>Item Name</th>
+                <th>Mass</th>
+                <th>HP</th>
+                <th>Cold</th>
+                <th>Heat</th>
+                <th>Sharp</th>
+                <th>Blunt</th>
+                <th>Heat</th>
+                <th>Material</th>
+                <th>Quality</th>
+                <th id="armor_sharp_factor" class="theOrderMaterialsBy orderSelected">Sharp</th>
+                <th id="armor_blunt_factor"  class="theOrderMaterialsBy" data-selected="true">Blunt</th>
+                <th id="armor_heat_factor" class="theOrderMaterialsBy" data-selected="true">Heat</th>
+                <th id="max_hit_points_factor" class="theOrderMaterialsBy" data-selected="true">HP</th>
+                <th id="insulation_cold" class="theOrderMaterialsBy" data-selected="true">iCold</th>
+                <th id="insulation_heat" class="theOrderMaterialsBy" data-selected="true">iHeat</th>
+                </thead>
+                <tbody id="wearContents">
+
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="17">
+                        <table class="table table-sm" style="border-width: 0;">
+                            <tr>
+                                <th align="right" class="theth" style="font-size: 12px;">-270&deg;<td>
+                                <td style="width: 100%;padding: 0;margin: 0" valign="middle">
+                                    <div class="slider">
+                                        <div class="track"></div>
+                                        <div id="theRange" class="range" style="left: 11%; right: 41%;">
+                                            <span id="minConfy" style="float: left;font-size:12px;color: black;position:absolute;left: -36px;">-99.9&deg;</span>
+                                            <span id="maxConfy" style="float: right;font-size:12px;color: black;position:absolute;right: -36px;">+99.9&deg;</span>
+                                            <div style="clear: both;"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <th class="theth" style="font-size: 12px;">+270&deg;</th>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+            <br>
+
+        </td>
+        <td rowspan="3" style="min-width: 370px">
+            <table class="table table-sm table-bordered theResult" style="font-size: 12px !important;border-color: #f0f0f0;">
+                <thead>
+                <th>&nbsp;</th>
+                <th>HP</th>
+                <th>Sharp</th>
+                <th>Blunt</th>
+                <th>Heat</th>
+                </thead>
+                <tbody id="resultBodyParts">
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+    <th class="theth">Skin</th>
+    </tr>
+    <tr>
+    <td valign="middle" align="center" style="padding: 2px !important;">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="191px" height="201px" viewBox="-0.5 -0.5 191 262"
+             content=""
+             style="background-color: rgb(255, 255, 255);">
+            <defs/>
+            <g>
+                <rect id="layer_2_5" data-partn-name="neck" data-occupied-by="" x="70" y="0" width="50" height="30" rx="4.5" ry="4.5" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                <rect id="layer_2_4" data-partn-name="torso" data-occupied-by="" x="35" y="40" width="120" height="110" rx="16.5" ry="16.5" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                <rect id="layer_2_6" data-partn-name="left_shoulder" data-occupied-by="" x="15" y="30" width="80" height="40" rx="6" ry="6" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                <rect id="layer_2_8" data-partn-name="right_shoulder" data-occupied-by="" x="95" y="30" width="80" height="40" rx="6" ry="6" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+                <rect id="layer_2_7" data-partn-name="left_arm" data-occupied-by="" x="-50" y="90" width="120" height="20" rx="3" ry="3" stroke-width="1" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" transform="rotate(-90,10,100)" pointer-events="all"/>
+                <rect id="layer_2_9" data-partn-name="right_arm" data-occupied-by="" x="120" y="90" width="120" height="20" rx="3" ry="3" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" transform="rotate(-90,180,100)" pointer-events="all"/>
+                <rect id="layer_2_10" data-partn-name="left_leg" data-occupied-by="" x="-10" y="190" width="120" height="20" rx="3" ry="3" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" transform="rotate(-75,50,200)" pointer-events="all"/>
+                <rect id="layer_2_11" data-partn-name="right_leg" data-occupied-by="" x="80" y="190" width="120" height="20" rx="3" ry="3" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" transform="rotate(-105,140,200)" pointer-events="all"/>
+            </g>
+        </svg>
+    </td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+<div class="container-fluid text-center w-100 m-0">
+    <div class="row">
+    <div class="col" id="coreItemList">
+        <img src="images/72px-RimWorldLogo.png" width="40" height="40"><hr>
+    </div>
+    <div class="col" id="biotechItemList">
+        <img src="images/40px-BiotechIcon.png" width="40" height="40"><hr>
+    </div>
+    <div class="col" id="ideologyItemList">
+        <img src="images/40px-IdeologyIcon.png" width="40" height="40"><hr>
+    </div>
+    <div class="col" id="royalityItemList">
+        <img src="images/40px-RoyaltyIcon.png" width="40" height="40"><hr>
+    </div>
+    </div>
+</div>
+
+<span style="display: none" id="toCloneItem" data-item-id="" data-coverage-ids="" data-layer="" data-item-data="">
+    <span class="btn btn-light btn-sm text-nowrap"><img src="SRC" width="24" height="24" alt="ITEM NAME"/><span class="text-nowrap">ITEM NAME</span></span>
+</span>
+
+<table style="display: none">
+<tr id="cloneTr">
+    <td valign="middle" align="center">
+        <a class="btn btn-sm undressMe" href="#" role="button" style="background-color: #FF5555;font-size: 10px;color:white;font-weight: bold;">X</a>
+    </td>
+    <td class="theName" style="background-color: aqua;" valign="middle">
+        <span style="font-size: 12px !important;margin: 0;padding: 1px"><img src="THESRC" width="24" height="24" alt="ITEM NAME"/>
+            <span class="text-nowrap">ITEM NAME</span>
+        </span>
+    </td>
+    <td valign="middle" align="right" class="theMass" data-mass=""></td>
+    <td valign="middle" align="right" class="theHitpoints" data-hitpoints=""></td>
+    <td valign="middle" align="center" class="theCold" data-cold=""></td>
+    <td valign="middle" align="right" class="theHeat" data-heat=""></td>
+    <td valign="middle" align="right" class="theFactor_sharp" data-factor_sharp=""></td>
+    <td valign="middle" align="right" class="theFactor_blunt" data-factor_blunt=""></td>
+    <td valign="middle" align="right" class="theFactor_heat" data-factor_heat=""></td>
+    <td>
+        <select class="form-control form-control-sm theMaterial" style="font-size: 12px !important;">
+        </select>
+    </td>
+    <td>
+        <select class="form-control form-control-sm theQuality" style="font-size: 12px !important;">
+            <option value="1" class="itq1" data-quality-variation="">Awful</option>
+            <option value="2" class="itq2" data-quality-variation="">Poor</option>
+            <option value="3" class="itq3" data-quality-variation="">Normal</option>
+            <option value="4" class="itq4" data-quality-variation="">Good</option>
+            <option value="5" class="itq5" data-quality-variation="">Excellent</option>
+            <option value="6" class="itq6" data-quality-variation="">Masterwork</option>
+            <option value="7" class="itq7" data-quality-variation="">Legendary</option>
+        </select>
+
+    </td>
+    <td class="materialArmorSharp"></td>
+    <td class="materialArmorBlunt"></td>
+    <td class="materialArmorHeat"></td>
+    <td class="materialHP"></td>
+    <td class="materialCold"></td>
+    <td class="materialHeat"></td>
+</tr>
+<tr id="cloneBodyGroup">
+    <th class="theName" style="width: 1px;">Torso</th>
+    <td class="theHitPoints" align="right"></td>
+    <td class="theArmorSharp" align="right"></td>
+    <td class="theArmorBlunt" align="right"></td>
+    <td class="theArmorHeat" align=right></td>
+    
+</tr>
+
+</table>
+
+
+<script type="module">
+let minimumAcceptableTemperature = 16;
+let maximumAcceptableTemperature = 26;
+
+let bodyGroups = {
+    "1": "Torso",
+    "2": "UpperHead",
+    "3": "FullHead",
+    "4": "Shoulders",
+    "5": "Arms",
+    "6": "Hands",
+    "7": "LeftHand",
+    "8": "RightHand",
+    "9": "Legs",
+    "10": "Feet"
+};
+
+let bodyGroupContains = {
+    "1": [4,5], //clavicles, sternum, ribs, pelvis, spine, stomach, heart, lungs, kidneys, liver, neck
+    "2": [1,2,3], //head, skull, brain, ears
+    "3": [1,2,3,12,13,14,15], //head, skull, brain, eyes, ears, nose, jaw
+    "4" : [6,8], //shoulders
+    "5" : [7,9], //arms, hands, humeri, radii
+    "6" : [7,9], //hands, fingers.
+    "7" :[7], //left hand, left hand fingers
+    "8" : [9], //right hand, right hand fingers
+    "9" : [10,11], //legs, feet, femurs, tibiae
+    "10" : [10,11] //feet, toes
+};
+
+let bodyPartsInGroup = {
+    "1": [2,3], //head
+    "2": [2,3], // left ear
+    "3": [2,3], // right ear
+    "4": [1], //torso
+    "5": [1], //neck
+    "6": [4], //left shoulder
+    "7": [5,6,7], // left arm
+    "8": [4], // right shoulder
+    "9": [5,6,8], // right arm
+    "10": [9,10], //left leg
+    "11": [9,10], // right leg
+    "12": [3], // left eye
+    "13": [3],  // right eye
+    "14": [3],   //nose
+    "15": [3]  //jaw
+}
+
+let cover = {
+    "1":"HEAD",
+    "2":"LEFT EAR",
+    "3":"RIGHT EAR",
+    "4":"TORSO",
+    "5":"NECK",
+    "6":"LEFT SHOULDER",
+    "7":"LEFT ARM",
+    "8":"RIGHT SHOULDER",
+    "9":"RIGHT ARM",
+    "10":"LEFT LEG",
+    "11":"RIGHT LEG",
+    "12":"LEFT EYE",
+    "13":"RIGHT EYE",
+    "14":"NOSE",
+    "15":"JAW",
+    "16":"UPPER HEAD"
+};
+
+let materials = {
+    "30":"-",
+    "1":"Alpaca wool",
+    "2":"Bearskin",
+    "3":"Birdskin",
+    "4":"Bison wool",
+    "5":"Bluefur",
+    "6":"Camelhide",
+    "7":"Chinchilla fur",
+    "8":"Cloth",
+    "9":"Devilstrand",
+    "10":"Dog leather",
+    "11":"Elephant leather",
+    "12":"Foxfur",
+    "31":"Gold",
+    "13":"Guinea pig fur",
+    "14":"Heavy fur",
+    "15":"Human leather",
+    "16":"Hyperweave",
+    "17":"Lightleather",
+    "18":"Lizardskin",
+    "19":"Megasloth wool",
+    "20":"Muffalo wool",
+    "21":"Panthera fur",
+    "22":"Patchleather",
+    "23":"Pigskin",
+    "24":"Plainleather",
+    "32":"Plasteel",
+    "25":"Rhinoceros leather",
+    "26":"Sheep wool",
+    "33":"Silver",
+    "34":"Steel",
+    "27":"Synthread",
+    "28":"Thrumbofur",
+    "35":"Uranium",
+    "29":"Wolfskin",
+    "36":"Wood"
+};
+
+let quality = {
+    "1":"Awful",
+    "2":"Poor",
+    "3":"Normal",
+    "4":"Good",
+    "5":"Excellent",
+    "6":"Masterwork",
+    "7":"Legendary",
+};
+
+let qualityProtectionFactor = {
+    /* "Awful" */ "1": 0.6,
+    /* "Poor" */ "2": 0.8,
+    /* "Normal" */ "3": 1,
+    /* "Good" */ "4": 1.15,
+    /* "Excellent" */ "5": 1.3,
+    /* "Masterwork" */ "6": 1.45,
+    /* "Legendary" */ "7": 1.8
+};
+
+let qualityInsulationFactor = {
+    /* "Awful" */ "1": 0.8,
+    /* "Poor" */ "2": 0.9,
+    /* "Normal" */ "3": 1,
+    /* "Good" */ "4": 1.1,
+    /* "Excellent" */ "5": 1.2,
+    /* "Masterwork" */ "6": 1.5,
+    /* "Legendary" */ "7": 1.8
+}
+
+
+let colors = [
+    //'rgb(203,111,86)',
+    //'rgb(52,54,77)',
+    //'rgb(79,100,103)',
+    //'rgb(111,153,133)',
+    'rgb(225,169,154)',
+    'rgb(132,134,147)',
+    'rgb(148,162,163)',
+    'rgb(170,194,181)',
+
+    'rgb(215,140,121)',
+    'rgb(92,95,114)',
+    'rgb(113,131,133)',
+    'rgb(140,172,157)',
+    ];
+
+colors = [
+    '#C3E2C2',
+    '#EAECCC',
+    '#CD8D7A',
+    '#DBCC95',
+    '#F1D4E5',
+    'rgb(94,155,236)',
+    'rgb(171,147,235)',
+];
+
+let colorIndex = 0;
+
+    function undressItem(itemId){
+        colorIndex--;
+
+        let covered = $('#theitem'+itemId).data('coverage-ids').split(',');
+        let layers = $('#theitem'+itemId).data('layer').split(',');
+        layers.forEach(function (la) {
+            covered.forEach(function (co) {
+                $('#layer_'+la+'_'+co).css('fill', 'rgb(255,255,255)');
+                $('#layer_'+la+'_'+co).css('stroke-width', '1');
+                $('#layer_'+la+'_'+co).data('occupied-by', '');
+
+            });
+        });
+
+        grayItemsThatCannotBeWearedAnyMore(itemId);
+
+        $('#wearme'+itemId).remove();
+
+        calcConfyTemp();
+        calculateResult();
+    }
+
+    function calcConfyTemp() {
+        let confyCold = new Decimal(minimumAcceptableTemperature);
+        let confyHeat = new Decimal(maximumAcceptableTemperature);
+
+        $('[id^=wearme]').each(function () {
+            confyCold = confyCold.minus($(this).find('.materialCold').text());
+            confyHeat = confyHeat.plus($(this).find('.materialHeat').text());
+        });
+
+        showConfy(mathStuff(confyCold.toFixed(3), 1, 1, 10, 1, 10), mathStuff(confyHeat.toFixed(3),1,1,10,1,10));
+    }
+
+    function grayItemsThatCannotBeWearedAnyMore(removingItemId)
+    {
+        let layersStillCovered = {};
+
+        $('[id^=wearme]').each(function () {
+            if ($(this).data('weared-item-id') !== removingItemId) {
+                let stillWorn = JSON.parse(atob($('#theitem'+$(this).data('weared-item-id')).data('item-data')));
+                stillWorn.layer.split(',').forEach(function (la) {
+                    let dakey = 'L' + la;
+                    if (dakey in layersStillCovered) {
+                        layersStillCovered[dakey] = layersStillCovered[dakey].concat(stillWorn.coverage.split(','));
+                    } else {
+                        layersStillCovered[dakey] = stillWorn.coverage.split(',');
+                    }
+                });
+            }
+        });
+
+        $('[id^=theitem]').each(function () {
+            //show it
+            let showit = true;
+
+            let shownItemLayer = $(this).data('layer').split(',');
+            let shownItemCoverage = $(this).data('coverage-ids').split(',');
+
+            shownItemLayer.forEach(function (la) {
+                let fla = 'L'+la;
+                if (fla in layersStillCovered) {
+                    shownItemCoverage.forEach(function (co) {
+                        if (layersStillCovered[fla].includes(co)) {
+                            showit = false;
+                        }
+                    });
+                }
+            });
+
+            if (showit) {
+                $(this).find('span').find('span').css('color','#000000');
+                $(this).find('span').find('img').css('opacity','1');
+            }else{
+                //not sure if this is still needed as it should already be hidden
+                $(this).find('span').find('span').css('color','#d0d0d0');
+                $(this).find('span').find('img').css('opacity','0.3');
+            }
+
+        });
+    }
+
+    function wear(itemData, forceMaterialId = null, forceQualityId = null) {
+        let theTr = $('#cloneTr').clone();
+        theTr.prop('id', 'wearme'+itemData.item_id);
+        theTr.data('weared-item-id', itemData.item_id);
+        theTr.find('.theName').css('background-color', colors[colorIndex]);
+        theTr.find('.theName').find('span').find('span').html('<A href="https://rimworldwiki.com/wiki/'+itemData.item_name+'" target="_blank">'+itemData.item_name+'</A>');
+        theTr.find('.theName').find('img').prop('src', 'images/'+itemData.img_name+'.png');
+
+        theTr.find('.undressMe').click(function () {
+            undressItem($(this).parent().parent().data('weared-item-id'));
+        })
+
+        let covered = itemData.coverage.split(',');
+        let layers = itemData.layer.split(',');
+        let isAlreadyOccupied = false;
+        layers.forEach(function (la) {
+            covered.forEach(function (co) {
+                if ($('#layer_'+la+'_'+co).data('occupied-by') !== '') {
+                    isAlreadyOccupied = true;
+                    return false;
+                }
+                $('#layer_'+la+'_'+co).css('fill', colors[colorIndex]);
+                $('#layer_'+la+'_'+co).data('occupied-by', itemData.item_id);
+            });
+            if (isAlreadyOccupied) {
+                return false;
+            }
+        });
+
+        if (isAlreadyOccupied) {
+            if (!confirm('Already occupied, proceed ?')) {
+                return false;
+            }
+            alert('OK but understand that things will go wrong from this point on.');
+        }
+
+        theTr.find('.theName').mouseover(function () {
+            layers.forEach(function (la) {
+                covered.forEach(function (co) {
+                    $('#layer_'+la+'_'+co).css('stroke-width', '8');
+                });
+            });
+        })
+
+        theTr.find('.theName').mouseout(function () {
+            layers.forEach(function (la) {
+                covered.forEach(function (co) {
+                    $('#layer_'+la+'_'+co).css('stroke-width', '1');
+                });
+            });
+        })
+
+        theTr.find('.theMass').text((parseFloat(itemData.mass)/100) + ' kg' );
+        theTr.find('.theHitpoints').text(parseInt(itemData.hitpoints));
+        if (itemData.cold !== null ) {
+            theTr.find('.theCold').text(parseFloat(itemData.cold) + 'x');
+        }
+        if (itemData.heat !== null ) {
+            theTr.find('.theHeat').text(parseFloat(itemData.heat) + 'x');
+        }
+        if (itemData.factor_sharp !== null ) {
+            theTr.find('.theFactor_sharp').text(parseFloat(itemData.factor_sharp) + 'x');
+        }
+        if (itemData.factor_blunt !== null ) {
+            theTr.find('.theFactor_blunt').text(parseFloat(itemData.factor_blunt) + 'x');
+        }
+        if (itemData.factor_blunt !== null ) {
+            theTr.find('.theFactor_blunt').text(parseFloat(itemData.factor_blunt) + 'x');
+        }
+        if (itemData.factor_heat !== null ) {
+            theTr.find('.theFactor_heat').text(parseFloat(itemData.factor_heat) + 'x');
+        }
+
+        let sortedMaterials = orderTheseMaterialsBy(itemData.materials, $('.theOrderMaterialsBy.orderSelected').prop('id'));
+        for (let idx in sortedMaterials) {
+            theTr.find('.theMaterial').append(new Option(materials[sortedMaterials[idx]], sortedMaterials[idx]));
+        }
+
+        if (forceMaterialId !== null) {
+            theTr.find('.theMaterial').val(forceMaterialId);
+        }
+
+        theTr.find('.theMaterial').change(function () {
+            onChangeMaterial(itemData.item_id, $(this).val());
+        })
+
+        let useQuality = 3;
+        //[id^=wearme]
+        let lastUsedQuality = $('[id^=wearme] .theQuality:last option:selected').val();
+        if (lastUsedQuality !== undefined) {
+            useQuality = lastUsedQuality;
+        }
+        if (forceQualityId !== null) {
+            useQuality = forceQualityId;
+        }
+
+        theTr.find('.theQuality').val(useQuality);
+        theTr.find('.theQuality').change(function () {
+            onChangeQuality(itemData.item_id, $(this).val())
+        })
+
+        colorIndex++;
+
+        $('#wearContents').append(theTr);
+
+        showItemVariation(
+            itemData.item_id,
+            $('#wearme'+itemData.item_id+' .theMaterial option:selected').val(),
+            $('#wearme'+itemData.item_id+' .theQuality option:selected').val()
+        );
+
+        calcConfyTemp();
+
+        grayItemsThatCannotBeWearedAnyMore(-1);
+
+    }
+
+    function onChangeMaterial(itemId, materialId) {
+        //console.log("SQ:"+$('#wearme'+itemId+' .theQuality option:selected').val()+" : CHANGED MATERIAL  ON ITEM ID "+itemId+ " material "+materialId+":"+$('#wearme'+itemId+' .theMaterial option[value='+materialId+']').text());
+        showItemVariation(itemId, materialId, $('#wearme'+itemId+' .theQuality option:selected').val());
+        calcConfyTemp();
+    }
+
+    function onChangeQuality(itemId, qualityId) {
+        showItemVariation(itemId, $('#wearme'+itemId+' .theMaterial option:selected').val(), qualityId);
+        calcConfyTemp();
+    }
+
+    function calculateItemVariation(itemId, materialId, qualityId, doRound = true) {
+
+        let itemData = JSON.parse(atob($('#theitem'+itemId).data('item-data')));
+
+        return {
+            'cold': mathStuff(itemData.cold, materialData[materialId].insulation_cold, qualityInsulationFactor[qualityId], 1000, 3, 1000),
+            'heat': mathStuff(itemData.heat, materialData[materialId].insulation_heat, qualityInsulationFactor[qualityId], 1000, 3, 1000),
+            'armorSharp': mathStuff(itemData.factor_sharp, materialData[materialId].armor_sharp_factor, qualityProtectionFactor[qualityId], 10000, 6, 100),
+            'armorBlunt': mathStuff(itemData.factor_blunt, materialData[materialId].armor_blunt_factor, qualityProtectionFactor[qualityId], 10000, 6, 100),
+            'armorHeat' : mathStuff(itemData.factor_heat, materialData[materialId].armor_heat_factor, qualityProtectionFactor[qualityId], 10000, 6, 100),
+            'hitPoints' : mathStuff(itemData.hitpoints, materialData[materialId].max_hit_points_factor, 1, 100, 3, 100),
+        };
+
+    }
+
+    function mathStuff(itemFactor, materialFactor, qualityFactor, theTimes, theToFixed, theDiv) {
+
+        if (materialFactor === null) {
+            materialFactor = 1;
+        }
+
+        return Math.round(
+            (new Decimal(itemFactor))
+                .times(materialFactor)
+                .times(qualityFactor)
+                .times(theTimes)
+                .toFixed(theToFixed)
+        )/theDiv;
+    }
+
+    function showItemVariation(itemId, materialId, qualityId) {
+
+        let calculated = calculateItemVariation(itemId, materialId, qualityId);
+
+        $('#wearme'+itemId+' .materialArmorSharp').text(calculated.armorSharp);
+        $('#wearme'+itemId+' .materialArmorBlunt').text(calculated.armorBlunt);
+        $('#wearme'+itemId+' .materialArmorHeat').text(calculated.armorHeat);
+        $('#wearme'+itemId+' .materialHP').text(calculated.hitPoints);
+        $('#wearme'+itemId+' .materialCold').text(calculated.cold);
+        $('#wearme'+itemId+' .materialHeat').text(calculated.heat);
+
+        calculateResult();
+
+    }
+
+
+    function addItem(itemData, appendTo) {
+        let item = $('#toCloneItem').clone();
+        item.prop('id', 'theitem'+itemData.item_id);
+        item.css('display', 'inline');
+        item.find('img').prop('src', './images/'+itemData.img_name+'.png');
+        item.find('span').find('span').text(itemData.item_name);
+        item.data('item-id', itemData.item_id)
+        item.data('item-data', btoa(JSON.stringify(itemData)))
+        item.data('coverage-ids', itemData.coverage)
+        item.data('layer', itemData.layer)
+
+        item.mouseover(function () {
+            let covered = $(this).data('coverage-ids').split(',');
+            let layers = $(this).data('layer').split(',');
+            layers.forEach(function (la) {
+                covered.forEach(function (co) {
+                    $('#layer_'+la+'_'+co).css('stroke-width', '8');
+                    if ($('#layer_'+la+'_'+co).data('occupied-by') !== '') {
+                        $('#layer_'+la+'_'+co).css('stroke', '#FF5555');
+                    }
+
+                });
+            });
+
+            let wierdItems = {42:true} //Blindfold
+
+            if (itemData.item_id in wierdItems)
+            {
+                $(this).find('span').find('span').css('cursor','not-allowed');
+            }
+
+        });
+        item.mouseout(function () {
+            let covered = $(this).data('coverage-ids').split(',');
+            let layers = $(this).data('layer').split(',');
+            layers.forEach(function (la) {
+                covered.forEach(function (co) {
+                    $('#layer_'+la+'_'+co).css('stroke-width', '1');
+                    $('#layer_'+la+'_'+co).css('stroke', '#000000');
+                });
+            });
+        });
+
+        item.click(function () {
+            wear(JSON.parse(atob($(this).data('item-data'))));
+        })
+
+
+        $('#'+appendTo).append(item);
+    }
+
+    function calculateResult() {
+
+        let bodyGroupResult = {};
+        for (let i in bodyGroups) {
+            bodyGroupResult[i] = {"HP": new Decimal(0), "ArmorSharp": new Decimal(0), "ArmorBlunt":new Decimal(0), "ArmorHeat":new Decimal(0)};
+        }
+
+        let byBodyGroupWornItems = [];
+
+        $('[id^=wearme]').each(function () {
+            let wearingItem = JSON.parse(atob($('#theitem'+$(this).data('weared-item-id')).data('item-data')));
+            wearingItem.coverage = wearingItem.coverage.split(',');
+            let wearingItemBodyGroupsKeys = [];
+            for (let k in wearingItem.coverage) {
+                for (let k2 in bodyPartsInGroup[wearingItem.coverage[k]]) {
+                    wearingItemBodyGroupsKeys[bodyPartsInGroup[wearingItem.coverage[k]][k2]] = {
+                        "HP": $(this).find('.materialHP').text(),
+                        "ArmorSharp": $(this).find('.materialArmorSharp').text(),
+                        "ArmorBlunt": $(this).find('.materialArmorBlunt').text(),
+                        "ArmorHeat": $(this).find('.materialArmorHeat').text(),
+                    };
+                }
+            }
+            byBodyGroupWornItems.push(wearingItemBodyGroupsKeys);
+        });
+
+        for (let idx in byBodyGroupWornItems) {
+            for (let xBodyGroupId in byBodyGroupWornItems[idx]) {
+                bodyGroupResult[xBodyGroupId]['HP'] = (bodyGroupResult[xBodyGroupId]['HP']).plus(byBodyGroupWornItems[idx][xBodyGroupId]['HP']);
+                bodyGroupResult[xBodyGroupId]['ArmorSharp'] = (bodyGroupResult[xBodyGroupId]['ArmorSharp']).plus(byBodyGroupWornItems[idx][xBodyGroupId]['ArmorSharp']);
+                bodyGroupResult[xBodyGroupId]['ArmorBlunt'] = (bodyGroupResult[xBodyGroupId]['ArmorBlunt']).plus(byBodyGroupWornItems[idx][xBodyGroupId]['ArmorBlunt']);
+                bodyGroupResult[xBodyGroupId]['ArmorHeat'] = (bodyGroupResult[xBodyGroupId]['ArmorHeat']).plus(byBodyGroupWornItems[idx][xBodyGroupId]['ArmorHeat']);
+            }
+        }
+
+        for (let yBodyGroupId in bodyGroupResult) {
+
+            let showValues = {
+                ".theHitPoints": Math.round(bodyGroupResult[yBodyGroupId]['HP'].toFixed(3) * 100) / 100,
+                ".theArmorSharp": Math.round(bodyGroupResult[yBodyGroupId]['ArmorSharp'].toFixed(3) * 100) / 100,
+                ".theArmorBlunt": Math.round(bodyGroupResult[yBodyGroupId]['ArmorBlunt'].toFixed(3) * 100) / 100,
+                ".theArmorHeat": Math.round(bodyGroupResult[yBodyGroupId]['ArmorHeat'].toFixed(3) * 100) / 100,
+            };
+
+            for (let theClassName in showValues) {
+                if (showValues[theClassName] === 0) {
+                    $('#bodyGroup' + yBodyGroupId).find(theClassName).html('<span style="color:#c0c0c0">-</span>');
+                } else {
+                    $('#bodyGroup' + yBodyGroupId).find(theClassName).text(showValues[theClassName]);
+                }
+            }
+
+        }
+    }
+
+    // when opening the page with file:// using below import will not work
+    //import itemsCore from "./data/items_core.json" assert {type: "json"};
+    //import itemsBiotech from "./data/items_biotech.json" assert {type: "json"};
+    //import itemsIdeology from "./data/items_ideology.json" assert {type: "json"};
+    //import itemsRoyality from "./data/items_royality.json" assert {type: "json"};
+    //import materialData from "./data/material.json" assert {type: "json"};
+
+    let itemsCore = [{"item_id":1,"dlc":"Core","item_name":"Bowler hat","img_name":"Bowler_hat","mass":140,"hitpoints":80,"hasmat":1,"cold":0.1,"heat":0.4,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child, Adult","coverage":"1,2,3","layer":"1","tomake":1800,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":2,"dlc":"Core","item_name":"Cowboy hat","img_name":"Cowboy_hat","mass":140,"hitpoints":80,"hasmat":1,"cold":0.1,"heat":0.5,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child, Adult","coverage":"1,2,3","layer":"1","tomake":1800,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":3,"dlc":"Core","item_name":"Hood","img_name":"Hood","mass":100,"hitpoints":80,"hasmat":1,"cold":0.1,"heat":0.25,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child, Adult","coverage":"1,2,3","layer":"1","tomake":6000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":4,"dlc":"Core","item_name":"Psychic foil helmet","img_name":"Psychic_foil_helmet","mass":1000,"hitpoints":80,"hasmat":0,"cold":2,"heat":1,"factor_sharp":0.09,"factor_blunt":0.09,"factor_heat":0.27,"lifestage":"Adult","coverage":"1,2,3","layer":"1","tomake":null,"materials":[30]},{"item_id":5,"dlc":"Core","item_name":"Tribal headdress","img_name":"Tribal_headdress","mass":110,"hitpoints":100,"hasmat":1,"cold":0.1,"heat":0.15,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child, Adult","coverage":"1,2,3","layer":"1","tomake":6000,"materials":[1,4,8,9,16,19,20,26,27]},{"item_id":6,"dlc":"Core","item_name":"Tuque","img_name":"Tuque","mass":70,"hitpoints":80,"hasmat":1,"cold":0.5,"heat":0,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child, Adult","coverage":"1,2,3","layer":"1","tomake":1200,"materials":[1,4,8,9,16,19,20,26,27]},{"item_id":7,"dlc":"Core","item_name":"Button-down shirt","img_name":"Button-down_shirt","mass":300,"hitpoints":100,"hasmat":1,"cold":0.26,"heat":0.1,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Adult","coverage":"4,5,6,7,8,9","layer":"2","tomake":2700,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":8,"dlc":"Core","item_name":"Pants","img_name":"Pants","mass":500,"hitpoints":100,"hasmat":1,"cold":0.2,"heat":0.08,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Adult","coverage":"10,11","layer":"2","tomake":1600,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":9,"dlc":"Core","item_name":"T-shirt","img_name":"T-shirt","mass":250,"hitpoints":100,"hasmat":1,"cold":0.22,"heat":0.1,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Adult","coverage":"4,6,8","layer":"2","tomake":1600,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":10,"dlc":"Core","item_name":"Tribalwear","img_name":"Tribalwear","mass":500,"hitpoints":100,"hasmat":1,"cold":0.55,"heat":0.55,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Adult","coverage":"4,10,11","layer":"2","tomake":1800,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":11,"dlc":"Core","item_name":"Duster","img_name":"Duster","mass":2200,"hitpoints":200,"hasmat":1,"cold":0.6,"heat":0.85,"factor_sharp":0.3,"factor_blunt":0.3,"factor_heat":0.3,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"3","tomake":10000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":12,"dlc":"Core","item_name":"Jacket","img_name":"Jacket","mass":1700,"hitpoints":160,"hasmat":1,"cold":0.8,"heat":0.3,"factor_sharp":0.3,"factor_blunt":0.3,"factor_heat":0.3,"lifestage":"Adult","coverage":"4,5,6,7,8,9","layer":"3","tomake":7000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":13,"dlc":"Core","item_name":"Parka","img_name":"Parka","mass":3800,"hitpoints":140,"hasmat":1,"cold":2,"heat":0,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Adult","coverage":"4,5,6,7,8,9","layer":"3","tomake":8000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":14,"dlc":"Core","item_name":"Flak helmet","img_name":"Flak_helmet","mass":1200,"hitpoints":120,"hasmat":1,"cold":0.15,"heat":0,"factor_sharp":0.7,"factor_blunt":0.7,"factor_heat":0.7,"lifestage":"Adult","coverage":"1,2,3","layer":"1","tomake":8000,"materials":[31,32,33,34,35]},{"item_id":15,"dlc":"Core","item_name":"Flak jacket","img_name":"Flak_jacket","mass":4000,"hitpoints":260,"hasmat":0,"cold":14.4,"heat":3,"factor_sharp":0.4,"factor_blunt":0.08,"factor_heat":0.1,"lifestage":"Adult","coverage":"4,5,6,7,8,9","layer":"3","tomake":14000,"materials":[30]},{"item_id":16,"dlc":"Core","item_name":"Flak pants","img_name":"Flak_pants","mass":4000,"hitpoints":140,"hasmat":0,"cold":3.5,"heat":1,"factor_sharp":0.4,"factor_blunt":0.08,"factor_heat":0.1,"lifestage":"Adult","coverage":"10,11","layer":"2,4","tomake":9000,"materials":[30]},{"item_id":17,"dlc":"Core","item_name":"Flak vest","img_name":"Flak_vest","mass":4000,"hitpoints":200,"hasmat":0,"cold":1,"heat":0,"factor_sharp":1,"factor_blunt":0.36,"factor_heat":0.27,"lifestage":"Adult","coverage":"4,5,6,8","layer":"4","tomake":9000,"materials":[30]},{"item_id":18,"dlc":"Core","item_name":"Marine armor","img_name":"Marine_armor","mass":15000,"hitpoints":340,"hasmat":0,"cold":32,"heat":9,"factor_sharp":1.06,"factor_blunt":0.45,"factor_heat":0.54,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"4,3","tomake":60000,"materials":[30]},{"item_id":19,"dlc":"Core","item_name":"Marine helmet","img_name":"Marine_helmet","mass":1500,"hitpoints":160,"hasmat":0,"cold":4,"heat":2,"factor_sharp":1.06,"factor_blunt":0.45,"factor_heat":0.54,"lifestage":"Adult","coverage":"1,12,13,2,3,14,15","layer":"1","tomake":21000,"materials":[30]},{"item_id":20,"dlc":"Core","item_name":"Plate armor","img_name":"Plate_armor","mass":15000,"hitpoints":290,"hasmat":1,"cold":1,"heat":0,"factor_sharp":0.73,"factor_blunt":0.73,"factor_heat":0.73,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"4,3","tomake":38000,"materials":[31,32,33,34,35,36]},{"item_id":21,"dlc":"Core","item_name":"Recon armor","img_name":"Recon_armor","mass":9000,"hitpoints":280,"hasmat":0,"cold":32,"heat":9,"factor_sharp":0.92,"factor_blunt":0.4,"factor_heat":0.46,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"4,3","tomake":45000,"materials":[30]},{"item_id":22,"dlc":"Core","item_name":"Recon helmet","img_name":"Recon_helmet","mass":1000,"hitpoints":120,"hasmat":0,"cold":4,"heat":2,"factor_sharp":0.92,"factor_blunt":0.4,"factor_heat":0.46,"lifestage":"Adult","coverage":"1,12,13,2,3,14,15","layer":"1","tomake":15750,"materials":[30]},{"item_id":23,"dlc":"Core","item_name":"Simple helmet","img_name":"Simple_helmet","mass":2000,"hitpoints":100,"hasmat":1,"cold":0.15,"heat":0,"factor_sharp":0.5,"factor_blunt":0.5,"factor_heat":0.5,"lifestage":"Adult","coverage":"1,2,3","layer":"1","tomake":3200,"materials":[31,32,33,34,35]},{"item_id":24,"dlc":"Core","item_name":"Veil","img_name":"Veil","mass":80,"hitpoints":80,"hasmat":1,"cold":0.05,"heat":0.05,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child, Adult","coverage":"1,12,13,2,3,14,15","layer":"1","tomake":1400,"materials":[1,4,8,9,16,19,20,26,27]},{"item_id":25,"dlc":"Core","item_name":"War mask","img_name":"War_mask","mass":1400,"hitpoints":65,"hasmat":1,"cold":0.05,"heat":0.05,"factor_sharp":0.3,"factor_blunt":0.3,"factor_heat":0.3,"lifestage":"Adult","coverage":"1,12,13,2,3,14,15","layer":"1","tomake":3000,"materials":[36]}];
+    let itemsBiotech = [{"item_id":26,"dlc":"Biotech","item_name":"Airwire headset","img_name":"Airwire_headset","mass":80,"hitpoints":60,"hasmat":0,"cold":0,"heat":0,"factor_sharp":0,"factor_blunt":0,"factor_heat":0,"lifestage":"Adult","coverage":"1,2,3","layer":"1","tomake":2100,"materials":[30]},{"item_id":27,"dlc":"Biotech","item_name":"Array headset","img_name":"Array_headset","mass":80,"hitpoints":60,"hasmat":0,"cold":0,"heat":0,"factor_sharp":0,"factor_blunt":0,"factor_heat":0,"lifestage":"Adult","coverage":"16","layer":"1","tomake":2100,"materials":[30]},{"item_id":28,"dlc":"Biotech","item_name":"Face mask","img_name":"Face_mask","mass":40,"hitpoints":40,"hasmat":1,"cold":0.02,"heat":0.02,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child, Adult","coverage":"15","layer":"1","tomake":800,"materials":[1,4,8,9,16,19,20,26,27]},{"item_id":29,"dlc":"Biotech","item_name":"Gas mask","img_name":"Gas_mask","mass":400,"hitpoints":80,"hasmat":0,"cold":0,"heat":0,"factor_sharp":0,"factor_blunt":0,"factor_heat":0,"lifestage":"Child, Adult","coverage":"1,12,13,2,3,14,15","layer":"1","tomake":6000,"materials":[30]},{"item_id":30,"dlc":"Biotech","item_name":"Heavy bandolier","img_name":"Heavy_bandolier","mass":1500,"hitpoints":50,"hasmat":1,"cold":0.1,"heat":0.1,"factor_sharp":0.1,"factor_blunt":0.1,"factor_heat":0.1,"lifestage":"Adult","coverage":"4","layer":"3","tomake":3500,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":31,"dlc":"Biotech","item_name":"Integrator headset","img_name":"Integrator_headset","mass":1000,"hitpoints":120,"hasmat":0,"cold":0,"heat":0,"factor_sharp":0,"factor_blunt":0,"factor_heat":0,"lifestage":"Adult","coverage":"1,2,3","layer":"1","tomake":15750,"materials":[30]},{"item_id":32,"dlc":"Biotech","item_name":"Kid helmet","img_name":"Kid_helmet","mass":1000,"hitpoints":60,"hasmat":1,"cold":0.15,"heat":0,"factor_sharp":0.5,"factor_blunt":0.5,"factor_heat":0.5,"lifestage":"Child","coverage":"1,2,3","layer":"1","tomake":2000,"materials":[31,32,33,34,35]},{"item_id":33,"dlc":"Biotech","item_name":"Kid pants","img_name":"Kid_pants","mass":250,"hitpoints":50,"hasmat":1,"cold":0.2,"heat":0.08,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child","coverage":"10,11","layer":"2","tomake":1280,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":34,"dlc":"Biotech","item_name":"Kid parka","img_name":"Kid_parka","mass":1000,"hitpoints":100,"hasmat":1,"cold":1.5,"heat":0,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child","coverage":"4,5,6,7,8,9","layer":"3","tomake":6400,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":35,"dlc":"Biotech","item_name":"Kid romper","img_name":"Kid_romper","mass":180,"hitpoints":50,"hasmat":1,"cold":0.22,"heat":0.1,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child","coverage":"4,5,6,7,8,9,10,11","layer":"2","tomake":2000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":36,"dlc":"Biotech","item_name":"Kid shirt","img_name":"Kid_shirt","mass":150,"hitpoints":50,"hasmat":1,"cold":0.22,"heat":0.1,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child","coverage":"4,6,8","layer":"2","tomake":1280,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":37,"dlc":"Biotech","item_name":"Kid tribalwear","img_name":"Kid_tribalwear","mass":500,"hitpoints":60,"hasmat":1,"cold":0.5,"heat":0.5,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child","coverage":"4,10,11","layer":"2","tomake":1400,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":38,"dlc":"Biotech","item_name":"Mechcommander helmet","img_name":"Mechcommander_helmet","mass":1000,"hitpoints":150,"hasmat":0,"cold":3,"heat":1.5,"factor_sharp":0.69,"factor_blunt":0.3,"factor_heat":0.345,"lifestage":"Adult","coverage":"1,12,13,2,3,14,15","layer":"1","tomake":15750,"materials":[30]},{"item_id":39,"dlc":"Biotech","item_name":"Mechlord suit","img_name":"Mechlord_suit","mass":12000,"hitpoints":340,"hasmat":0,"cold":32,"heat":9,"factor_sharp":0.92,"factor_blunt":0.4,"factor_heat":0.46,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"4,3","tomake":60000,"materials":[30]},{"item_id":40,"dlc":"Biotech","item_name":"Sash","img_name":"Sash","mass":1000,"hitpoints":50,"hasmat":1,"cold":0.1,"heat":0.1,"factor_sharp":0.1,"factor_blunt":0.1,"factor_heat":0.1,"lifestage":"Adult","coverage":"4","layer":"4","tomake":1000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]}];
+    let itemsIdeology = [{"item_id":41,"dlc":"Ideology","item_name":"Authority cap","img_name":"Authority_cap","mass":100,"hitpoints":80,"hasmat":1,"cold":0.1,"heat":0.1,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child, Adult","coverage":"1,2,3","layer":"1","tomake":1500,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":42,"dlc":"Ideology","item_name":"Blindfold","img_name":"Blindfold","mass":70,"hitpoints":80,"hasmat":1,"cold":0.35,"heat":0,"factor_sharp":0.1,"factor_blunt":0.1,"factor_heat":0.1,"lifestage":"Adult","coverage":"12,13","layer":"5","tomake":1200,"materials":[1,4,8,9,16,19,20,26,27]},{"item_id":43,"dlc":"Ideology","item_name":"Broadwrap","img_name":"Broadwrap","mass":100,"hitpoints":80,"hasmat":1,"cold":0.2,"heat":0.2,"factor_sharp":0.25,"factor_blunt":0.25,"factor_heat":0.25,"lifestage":"Child, Adult","coverage":"5,1,12,13,2,3,14,15,6,8","layer":"1","tomake":1800,"materials":[1,4,8,9,16,19,20,26,27]},{"item_id":44,"dlc":"Ideology","item_name":"Burka","img_name":"Burka","mass":1000,"hitpoints":100,"hasmat":1,"cold":0.1,"heat":0.2,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Adult","coverage":"4,1,12,13,2,3,14,15,5,6,7,8,9,10,11","layer":"3","tomake":4000,"materials":[1,4,8,9,16,19,20,26,27]},{"item_id":45,"dlc":"Ideology","item_name":"Flophat","img_name":"Flophat","mass":70,"hitpoints":80,"hasmat":1,"cold":0.5,"heat":0,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child, Adult","coverage":"1,2,3","layer":"1","tomake":1200,"materials":[1,4,8,9,16,19,20,26,27]},{"item_id":46,"dlc":"Ideology","item_name":"Headwrap","img_name":"Headwrap","mass":80,"hitpoints":80,"hasmat":1,"cold":0.1,"heat":0.1,"factor_sharp":0.25,"factor_blunt":0.25,"factor_heat":0.25,"lifestage":"Child, Adult","coverage":"1,2,3","layer":"1","tomake":1400,"materials":[1,4,8,9,16,19,20,26,27]},{"item_id":47,"dlc":"Ideology","item_name":"Robe","img_name":"Robe","mass":750,"hitpoints":100,"hasmat":1,"cold":0.8,"heat":0.25,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"3","tomake":5000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":48,"dlc":"Ideology","item_name":"Shadecone","img_name":"Shadecone","mass":140,"hitpoints":80,"hasmat":1,"cold":0.1,"heat":0.5,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Child, Adult","coverage":"1,2,3","layer":"1","tomake":1800,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":49,"dlc":"Ideology","item_name":"Slave body strap","img_name":"Slave_body_strap","mass":1500,"hitpoints":160,"hasmat":1,"cold":0.1,"heat":0.1,"factor_sharp":0.1,"factor_blunt":0.1,"factor_heat":0.1,"lifestage":"Adult","coverage":"4","layer":"3","tomake":7000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":50,"dlc":"Ideology","item_name":"Slave collar","img_name":"Slave_collar","mass":140,"hitpoints":80,"hasmat":1,"cold":0,"heat":0,"factor_sharp":0,"factor_blunt":0,"factor_heat":0,"lifestage":"Adult","coverage":"5","layer":"1","tomake":1800,"materials":[2,3,5,6,7,10,11,12,13,14,15,17,18,21,22,23,24,25,28,29,31,32,33,34,35]},{"item_id":51,"dlc":"Ideology","item_name":"Slicecap","img_name":"Slicecap","mass":800,"hitpoints":80,"hasmat":1,"cold":0,"heat":0.1,"factor_sharp":0.1,"factor_blunt":0.1,"factor_heat":0.1,"lifestage":"Adult","coverage":"1","layer":"1","tomake":2000,"materials":[31,32,33,34,35,36]},{"item_id":52,"dlc":"Ideology","item_name":"Tailcap","img_name":"Tailcap","mass":100,"hitpoints":80,"hasmat":1,"cold":0.5,"heat":0,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Adult","coverage":"1,2,3","layer":"1","tomake":1400,"materials":[2,3,5,6,7,10,11,12,13,14,15,17,18,21,22,23,24,25,28,29]},{"item_id":53,"dlc":"Ideology","item_name":"Torture crown","img_name":"Torture_crown","mass":900,"hitpoints":80,"hasmat":1,"cold":0,"heat":0,"factor_sharp":0.15,"factor_blunt":0.15,"factor_heat":0.15,"lifestage":"Adult","coverage":"1,2,3","layer":"1","tomake":1200,"materials":[31,32,33,34,35,36]},{"item_id":54,"dlc":"Ideology","item_name":"Visage mask","img_name":"Visage_mask","mass":100,"hitpoints":90,"hasmat":1,"cold":0.05,"heat":0.05,"factor_sharp":0.3,"factor_blunt":0.3,"factor_heat":0.3,"lifestage":"Adult","coverage":"1,12,13,2,3,14,15","layer":"1","tomake":2000,"materials":[31,32,33,34,35,36]}];
+    let itemsRoyality = [{"item_id":55,"dlc":"Royality","item_name":"Beret","img_name":"Beret","mass":100,"hitpoints":80,"hasmat":1,"cold":0.07,"heat":0.15,"factor_sharp":0,"factor_blunt":0,"factor_heat":0,"lifestage":"Child, Adult","coverage":"1,2,3","layer":"1","tomake":4000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":56,"dlc":"Royality","item_name":"Cape","img_name":"Cape","mass":2000,"hitpoints":200,"hasmat":1,"cold":0.6,"heat":0.85,"factor_sharp":0.3,"factor_blunt":0.3,"factor_heat":0.3,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"3","tomake":16000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":57,"dlc":"Royality","item_name":"Cataphract armor","img_name":"Cataphract_armor","mass":15000,"hitpoints":400,"hasmat":0,"cold":36,"heat":12,"factor_sharp":1.2,"factor_blunt":0.5,"factor_heat":0.6,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"4,3","tomake":75000,"materials":[30]},{"item_id":58,"dlc":"Royality","item_name":"Cataphract helmet","img_name":"Cataphract_helmet","mass":2000,"hitpoints":180,"hasmat":0,"cold":4,"heat":2,"factor_sharp":1.2,"factor_blunt":0.5,"factor_heat":0.6,"lifestage":"Adult","coverage":"1,12,13,2,3,14,15","layer":"1","tomake":26250,"materials":[30]},{"item_id":59,"dlc":"Royality","item_name":"Coronet","img_name":"Coronet","mass":700,"hitpoints":80,"hasmat":1,"cold":0,"heat":0,"factor_sharp":0,"factor_blunt":0,"factor_heat":0,"lifestage":"Adult","coverage":"1,2,3","layer":"1","tomake":8000,"materials":[31,32,33,34,35]},{"item_id":60,"dlc":"Royality","item_name":"Corset","img_name":"Corset","mass":750,"hitpoints":100,"hasmat":1,"cold":0.4,"heat":0.1,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Adult","coverage":"4","layer":"4","tomake":12000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":61,"dlc":"Royality","item_name":"Crown","img_name":"Crown","mass":900,"hitpoints":80,"hasmat":1,"cold":0,"heat":0,"factor_sharp":0,"factor_blunt":0,"factor_heat":0,"lifestage":"Adult","coverage":"1,2,3","layer":"1","tomake":12000,"materials":[31,32,33,34,35]},{"item_id":62,"dlc":"Royality","item_name":"Eltex helmet","img_name":"Eltex_helmet","mass":800,"hitpoints":80,"hasmat":0,"cold":4,"heat":1,"factor_sharp":0.09,"factor_blunt":0.09,"factor_heat":0.27,"lifestage":"Adult","coverage":"1,2,3","layer":"1","tomake":null,"materials":[30]},{"item_id":63,"dlc":"Royality","item_name":"Eltex robe","img_name":"Eltex_robe","mass":500,"hitpoints":100,"hasmat":0,"cold":15,"heat":1,"factor_sharp":0.07,"factor_blunt":0,"factor_heat":0.04,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"3","tomake":null,"materials":[30]},{"item_id":64,"dlc":"Royality","item_name":"Eltex shirt","img_name":"Eltex_shirt","mass":250,"hitpoints":100,"hasmat":0,"cold":5,"heat":1,"factor_sharp":0.07,"factor_blunt":0,"factor_heat":0.04,"lifestage":"Adult","coverage":"4,6,8","layer":"2","tomake":null,"materials":[30]},{"item_id":65,"dlc":"Royality","item_name":"Eltex skullcap","img_name":"Eltex_skullcap","mass":800,"hitpoints":80,"hasmat":0,"cold":0,"heat":0,"factor_sharp":0,"factor_blunt":0,"factor_heat":0,"lifestage":"Adult","coverage":"1,2,3","layer":"1","tomake":null,"materials":[30]},{"item_id":66,"dlc":"Royality","item_name":"Eltex vest","img_name":"Eltex_vest","mass":500,"hitpoints":100,"hasmat":0,"cold":6,"heat":1,"factor_sharp":0.07,"factor_blunt":0,"factor_heat":0.04,"lifestage":"Adult","coverage":"4,5,6,8","layer":"4","tomake":null,"materials":[30]},{"item_id":67,"dlc":"Royality","item_name":"Formal shirt","img_name":"Formal_shirt","mass":250,"hitpoints":100,"hasmat":1,"cold":0.22,"heat":0.1,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Adult","coverage":"4,5,6,7,8,9","layer":"2","tomake":6000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":68,"dlc":"Royality","item_name":"Formal vest","img_name":"Formal_vest","mass":750,"hitpoints":100,"hasmat":1,"cold":0.4,"heat":0.1,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Adult","coverage":"4","layer":"4","tomake":12000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":69,"dlc":"Royality","item_name":"Grenadier armor","img_name":"Grenadier_armor","mass":15000,"hitpoints":340,"hasmat":0,"cold":32,"heat":9,"factor_sharp":1.01,"factor_blunt":0.4,"factor_heat":0.49,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"4,3","tomake":60000,"materials":[30]},{"item_id":70,"dlc":"Royality","item_name":"Gunlink","img_name":"Gunlink","mass":1000,"hitpoints":100,"hasmat":0,"cold":0,"heat":0,"factor_sharp":0,"factor_blunt":0,"factor_heat":0,"lifestage":"Adult","coverage":"1,2,3","layer":"1","tomake":15750,"materials":[30]},{"item_id":71,"dlc":"Royality","item_name":"Ladies hat","img_name":"Ladies_hat","mass":100,"hitpoints":80,"hasmat":1,"cold":0.1,"heat":0.25,"factor_sharp":0,"factor_blunt":0,"factor_heat":0,"lifestage":"Child, Adult","coverage":"1,2,3","layer":"1","tomake":6000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":72,"dlc":"Royality","item_name":"Locust armor","img_name":"Locust_armor","mass":9000,"hitpoints":280,"hasmat":0,"cold":32,"heat":9,"factor_sharp":0.87,"factor_blunt":0.35,"factor_heat":0.41,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"4,3","tomake":45000,"materials":[30]},{"item_id":73,"dlc":"Royality","item_name":"Phoenix armor","img_name":"Phoenix_armor","mass":15000,"hitpoints":400,"hasmat":0,"cold":36,"heat":100,"factor_sharp":1.15,"factor_blunt":0.45,"factor_heat":0.75,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"4,3","tomake":75000,"materials":[30]},{"item_id":74,"dlc":"Royality","item_name":"Prestige cataphract armor","img_name":"Prestige_cataphract_armor","mass":15000,"hitpoints":400,"hasmat":0,"cold":36,"heat":12,"factor_sharp":1.2,"factor_blunt":0.5,"factor_heat":0.6,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"4,3","tomake":150000,"materials":[30]},{"item_id":75,"dlc":"Royality","item_name":"Prestige cataphract helmet","img_name":"Prestige_cataphract_helmet","mass":2000,"hitpoints":180,"hasmat":0,"cold":4,"heat":2,"factor_sharp":1.2,"factor_blunt":0.5,"factor_heat":0.6,"lifestage":"Adult","coverage":"1,12,13,2,3,14,15","layer":"1","tomake":52500,"materials":[30]},{"item_id":76,"dlc":"Royality","item_name":"Prestige marine armor","img_name":"Prestige_marine_armor","mass":15000,"hitpoints":340,"hasmat":0,"cold":32,"heat":9,"factor_sharp":1.06,"factor_blunt":0.45,"factor_heat":0.54,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"4,3","tomake":120000,"materials":[30]},{"item_id":77,"dlc":"Royality","item_name":"Prestige marine helmet","img_name":"Prestige_marine_helmet","mass":2700,"hitpoints":160,"hasmat":0,"cold":4,"heat":2,"factor_sharp":1.06,"factor_blunt":0.45,"factor_heat":0.54,"lifestage":"Adult","coverage":"1,12,13,2,3,14,15","layer":"1","tomake":42000,"materials":[30]},{"item_id":78,"dlc":"Royality","item_name":"Prestige recon armor","img_name":"Prestige_recon_armor","mass":9000,"hitpoints":280,"hasmat":0,"cold":32,"heat":9,"factor_sharp":0.92,"factor_blunt":0.4,"factor_heat":0.46,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"4,3","tomake":90000,"materials":[30]},{"item_id":79,"dlc":"Royality","item_name":"Prestige recon helmet","img_name":"Prestige_recon_helmet","mass":1000,"hitpoints":120,"hasmat":0,"cold":4,"heat":2,"factor_sharp":0.92,"factor_blunt":0.4,"factor_heat":0.46,"lifestage":"Adult","coverage":"1,12,13,2,3,14,15","layer":"1","tomake":15750,"materials":[30]},{"item_id":80,"dlc":"Royality","item_name":"Prestige robe","img_name":"Prestige_robe","mass":750,"hitpoints":100,"hasmat":1,"cold":0.8,"heat":0.25,"factor_sharp":0.2,"factor_blunt":0.2,"factor_heat":0.2,"lifestage":"Adult","coverage":"4,5,6,7,8,9,10,11","layer":"3","tomake":20000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]},{"item_id":81,"dlc":"Royality","item_name":"Stellic crown","img_name":"Stellic_crown","mass":900,"hitpoints":80,"hasmat":1,"cold":0,"heat":0,"factor_sharp":0,"factor_blunt":0,"factor_heat":0,"lifestage":"Adult","coverage":"1,2,3","layer":"1","tomake":0,"materials":[31,32,33,34,35]},{"item_id":82,"dlc":"Royality","item_name":"Top hat","img_name":"Top_hat","mass":100,"hitpoints":80,"hasmat":1,"cold":0.25,"heat":0.1,"factor_sharp":0,"factor_blunt":0,"factor_heat":0,"lifestage":"Child, Adult","coverage":"1,2,3","layer":"1","tomake":6000,"materials":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]}];
+    let materialData = {"1":{"max_hit_points_factor":1,"armor_sharp_factor":0.36,"armor_blunt_factor":0,"armor_heat_factor":1.1,"insulation_cold":30,"insulation_heat":16},"2":{"max_hit_points_factor":1.3,"armor_sharp_factor":1.12,"armor_blunt_factor":0.24,"armor_heat_factor":1.5,"insulation_cold":20,"insulation_heat":20},"3":{"max_hit_points_factor":1,"armor_sharp_factor":0.67,"armor_blunt_factor":0.14,"armor_heat_factor":1.5,"insulation_cold":10,"insulation_heat":10},"4":{"max_hit_points_factor":1,"armor_sharp_factor":0.36,"armor_blunt_factor":0,"armor_heat_factor":1.1,"insulation_cold":26,"insulation_heat":12},"5":{"max_hit_points_factor":1.3,"armor_sharp_factor":0.81,"armor_blunt_factor":0.24,"armor_heat_factor":1.5,"insulation_cold":20,"insulation_heat":16},"6":{"max_hit_points_factor":1.3,"armor_sharp_factor":0.81,"armor_blunt_factor":0.24,"armor_heat_factor":1.5,"insulation_cold":16,"insulation_heat":24},"7":{"max_hit_points_factor":1,"armor_sharp_factor":0.67,"armor_blunt_factor":0.14,"armor_heat_factor":1.5,"insulation_cold":30,"insulation_heat":16},"8":{"max_hit_points_factor":1,"armor_sharp_factor":0.36,"armor_blunt_factor":0,"armor_heat_factor":0.18,"insulation_cold":18,"insulation_heat":18},"9":{"max_hit_points_factor":1.3,"armor_sharp_factor":1.4,"armor_blunt_factor":0.36,"armor_heat_factor":3,"insulation_cold":20,"insulation_heat":24},"10":{"max_hit_points_factor":1.3,"armor_sharp_factor":0.81,"armor_blunt_factor":0.24,"armor_heat_factor":1.5,"insulation_cold":14,"insulation_heat":16},"11":{"max_hit_points_factor":1.5,"armor_sharp_factor":1.12,"armor_blunt_factor":0.24,"armor_heat_factor":1.5,"insulation_cold":14,"insulation_heat":12},"12":{"max_hit_points_factor":1,"armor_sharp_factor":0.81,"armor_blunt_factor":0.21,"armor_heat_factor":1.5,"insulation_cold":20,"insulation_heat":16},"13":{"max_hit_points_factor":0.6,"armor_sharp_factor":0.67,"armor_blunt_factor":0.14,"armor_heat_factor":1.5,"insulation_cold":38,"insulation_heat":18},"14":{"max_hit_points_factor":1.5,"armor_sharp_factor":1.24,"armor_blunt_factor":0.24,"armor_heat_factor":1.5,"insulation_cold":30,"insulation_heat":14},"15":{"max_hit_points_factor":1.3,"armor_sharp_factor":0.64,"armor_blunt_factor":0.24,"armor_heat_factor":1.5,"insulation_cold":12,"insulation_heat":12},"16":{"max_hit_points_factor":2.4,"armor_sharp_factor":2,"armor_blunt_factor":0.54,"armor_heat_factor":2.88,"insulation_cold":26,"insulation_heat":26},"17":{"max_hit_points_factor":1,"armor_sharp_factor":0.54,"armor_blunt_factor":0.14,"armor_heat_factor":1.5,"insulation_cold":12,"insulation_heat":12},"18":{"max_hit_points_factor":1,"armor_sharp_factor":0.81,"armor_blunt_factor":0.27,"armor_heat_factor":1.5,"insulation_cold":12,"insulation_heat":12},"19":{"max_hit_points_factor":1,"armor_sharp_factor":0.8,"armor_blunt_factor":0,"armor_heat_factor":1.1,"insulation_cold":34,"insulation_heat":12},"20":{"max_hit_points_factor":1,"armor_sharp_factor":0.36,"armor_blunt_factor":0,"armor_heat_factor":1.1,"insulation_cold":28,"insulation_heat":12},"21":{"max_hit_points_factor":1.3,"armor_sharp_factor":0.93,"armor_blunt_factor":0.24,"armor_heat_factor":1.5,"insulation_cold":16,"insulation_heat":24},"22":{"max_hit_points_factor":1,"armor_sharp_factor":0.45,"armor_blunt_factor":0.19,"armor_heat_factor":0.9,"insulation_cold":9,"insulation_heat":9},"23":{"max_hit_points_factor":1.3,"armor_sharp_factor":0.64,"armor_blunt_factor":0.24,"armor_heat_factor":1.5,"insulation_cold":12,"insulation_heat":12},"24":{"max_hit_points_factor":1.3,"armor_sharp_factor":0.81,"armor_blunt_factor":0.24,"armor_heat_factor":1.5,"insulation_cold":16,"insulation_heat":16},"25":{"max_hit_points_factor":1.5,"armor_sharp_factor":1.29,"armor_blunt_factor":0.24,"armor_heat_factor":1.5,"insulation_cold":14,"insulation_heat":14},"26":{"max_hit_points_factor":1,"armor_sharp_factor":0.36,"armor_blunt_factor":0,"armor_heat_factor":1.1,"insulation_cold":26,"insulation_heat":10},"27":{"max_hit_points_factor":1.3,"armor_sharp_factor":0.94,"armor_blunt_factor":0.26,"armor_heat_factor":0.9,"insulation_cold":22,"insulation_heat":22},"28":{"max_hit_points_factor":2,"armor_sharp_factor":2.08,"armor_blunt_factor":0.36,"armor_heat_factor":1.5,"insulation_cold":34,"insulation_heat":22},"29":{"max_hit_points_factor":1.3,"armor_sharp_factor":1.02,"armor_blunt_factor":0.24,"armor_heat_factor":1.5,"insulation_cold":24,"insulation_heat":16},"30":{"max_hit_points_factor":null,"armor_sharp_factor":null,"armor_blunt_factor":null,"armor_heat_factor":null,"insulation_cold":null,"insulation_heat":null},"31":{"max_hit_points_factor":0.6,"armor_sharp_factor":0.72,"armor_blunt_factor":0.36,"armor_heat_factor":0.36,"insulation_cold":3,"insulation_heat":0},"32":{"max_hit_points_factor":2.8,"armor_sharp_factor":1.14,"armor_blunt_factor":0.55,"armor_heat_factor":0.65,"insulation_cold":3,"insulation_heat":0},"33":{"max_hit_points_factor":0.7,"armor_sharp_factor":0.72,"armor_blunt_factor":0.36,"armor_heat_factor":0.36,"insulation_cold":3,"insulation_heat":0},"34":{"max_hit_points_factor":1,"armor_sharp_factor":0.9,"armor_blunt_factor":0.45,"armor_heat_factor":0.6,"insulation_cold":3,"insulation_heat":0},"35":{"max_hit_points_factor":2.5,"armor_sharp_factor":1.08,"armor_blunt_factor":0.54,"armor_heat_factor":0.65,"insulation_cold":3,"insulation_heat":0},"36":{"max_hit_points_factor":0.65,"armor_sharp_factor":0.54,"armor_blunt_factor":0.54,"armor_heat_factor":0.4,"insulation_cold":8,"insulation_heat":4}};
+
+    $(document).ready(function() {
+
+        for (let key in bodyGroups) {
+
+            let clonedItem = $('#cloneBodyGroup').clone();
+            clonedItem.prop('id', 'bodyGroup'+key);
+            clonedItem.find('.theName').text(bodyGroups[key]);
+
+            let theSelector = [];
+            let theLayers = [1,2,3,4];
+            for (let key2 in bodyGroupContains[key]) {
+                for (let key3 in theLayers) {
+                    theSelector.push('#layer_'+theLayers[key3]+'_' + bodyGroupContains[key][key2]);
+                }
+            }
+
+            clonedItem.find('.theName').mouseover(function () {
+                $(theSelector.join(',')).css('stroke-width', '8');
+            });
+
+            clonedItem.find('.theName').mouseout(function () {
+                $(theSelector.join(',')).css('stroke-width', '1');
+            })
+
+
+            $('#resultBodyParts').append(clonedItem)
+
+        }
+
+
+        itemsCore.forEach(function (item) {
+            addItem(item, 'coreItemList');
+        });
+
+        itemsBiotech.forEach(function (item) {
+            if (item.item_id === 27) {
+                // https://rimworldwiki.com/wiki/Array%20headset
+                // Coverage set as "UpperHead" which means head, skull, brain, ears"
+                item.coverage = "1,2,3";//[1, 2, 3];
+            }
+
+            addItem(item, 'biotechItemList');
+        });
+
+
+        itemsIdeology.forEach(function (item) {
+            addItem(item, 'ideologyItemList');
+        });
+
+
+        itemsRoyality.forEach(function (item) {
+            addItem(item, 'royalityItemList');
+        });
+
+
+        showConfy(minimumAcceptableTemperature, maximumAcceptableTemperature);
+
+
+        $('#armor_sharp_factor, #armor_blunt_factor, #armor_heat_factor, #max_hit_points_factor, #insulation_cold, #insulation_heat').click(function () {
+
+            let thisOne = $(this).prop('id');
+            let listOfHeaders = ['armor_sharp_factor', 'armor_blunt_factor', 'armor_heat_factor', 'max_hit_points_factor', 'insulation_cold', 'insulation_heat'];
+            for (let i in listOfHeaders) {
+                if (listOfHeaders[i] !== thisOne) {
+                    $('#'+listOfHeaders[i]).removeClass('orderSelected');
+                }else{
+                    $('#'+listOfHeaders[i]).removeClass('orderSelected').addClass('orderSelected');
+                }
+            }
+        });
+
+        var hash = $(location).attr('hash').substring(1);
+        if (hash !== '') {
+            try {
+                let theAnchorItems = JSON.parse(atob(hash));
+                console.log(theAnchorItems);
+
+                for (let i in theAnchorItems) {
+                    let anchorItemId = parseInt(theAnchorItems[i][0]);
+                    wear(
+                        JSON.parse(atob($('#theitem' + anchorItemId).data('item-data'))),
+                        parseInt(theAnchorItems[i][1]),
+                        parseInt(theAnchorItems[i][2]),
+                    );
+                }
+            } catch (e) {
+                console.error('Invalid permalink.');
+            }
+        }
+
+
+
+        //number verifications, please ignore
+        //verifyCalc(itemsCore);
+        //verifyCalc(itemsBiotech);
+        //verifyCalc(itemsIdeology);
+        //verifyCalc(itemsRoyality);
+
+
+        //document.querySelector("#theCopy").addEventListener("click", copy);
+
+    }); //ready
+
+
+    function orderTheseMaterialsBy(theseMaterialIds, byWhat) {
+        let toSort = [];
+        for (let idx in theseMaterialIds) {
+            toSort.push([theseMaterialIds[idx], materialData[theseMaterialIds[idx]][byWhat]]);
+        }
+        toSort.sort(sortByThis).reverse();
+
+        let sorted = [];
+        for (let i in toSort) {
+            sorted.push(toSort[i][0]);
+        }
+
+        return sorted;
+    }
+
+    function sortByThis(a, b) {
+        if (a[1] === b[1]) {
+            return 0;
+        }
+        else {
+            return (a[1] < b[1]) ? -1 : 1;
+        }
+    }
+
+    function showConfy(tmin, tmax) {
+        let leftMe = Math.round((new Decimal(270)).plus(tmin).div(540).times(100));
+        let rightMe = 100 - Math.round((new Decimal(270)).plus(tmax).div(540).times(100));
+
+        if (tmin > 0) {
+            tmin = '+'+tmin;
+        }
+        if (tmax > 0) {
+            tmax = '+'+tmax;
+        }
+
+        $('#theRange').css('left', leftMe+'%').css('right', rightMe+'%');
+        $('#theRange #minConfy').text(tmin).append('&deg;');
+        $('#theRange #maxConfy').text(tmax).append('&deg;');
+    }
+
+    // debug function, please ignore
+    function verifyCalc(items)
+    {
+        items.forEach(function (item) {
+            $.ajax({
+                url: 'data/variation_' + item.item_id + '.json',
+            }).done(function (storedVariation) {
+
+                for (let qualityId in storedVariation) {
+                    for (let materialId in storedVariation[qualityId]) {
+                        // debug specific item
+                        //if (item.item_id == 7 && materialId == 4 && qualityId == 1) {
+                        //if (item.item_id == 14 && materialId == 32 && qualityId == 6) {
+                        if (true) {
+                            let calculated = calculateItemVariation(item.item_id, materialId, qualityId);
+                            let ok = true;
+                            if (storedVariation[qualityId][materialId].blunt !== calculated.armorBlunt) {
+                                ok = false;
+                                console.log(item.item_id + ':' + qualityId + ':' + materialId + ': ARMOR BLUNT NOOOOOOOOOOOOOOOOOT OK');
+                            }
+                            if (storedVariation[qualityId][materialId].heat !== calculated.armorHeat) {
+                                ok = false;
+                                console.log(item.item_id + ':' + qualityId + ':' + materialId + ':ARMOR HEAT NOOOOOOOOOOOOOOOOOT OK');
+                            }
+                            if (storedVariation[qualityId][materialId].sharp !== calculated.armorSharp) {
+                                ok = false;
+                                console.log(item.item_id + ':' + qualityId + ':' + materialId + ':ARMOR SHARP NOOOOOOOOOOOOOOOOOT OK');
+                            }
+                            if (storedVariation[qualityId][materialId].insulation_cold !== -calculated.cold) {
+                                ok = false;
+                                console.log(item.item_id + ':' + qualityId + ':' + materialId + ':COLD NOOOOOOOOOOOOOOOOOT OK');
+                            }
+                            if (storedVariation[qualityId][materialId].insulation_heat !== calculated.heat) {
+                                ok = false;
+                                console.log(item.item_id + ':' + qualityId + ':' + materialId + ':HEAT NOOOOOOOOOOOOOOOOOT OK');
+                            }
+                            if (storedVariation[qualityId][materialId].hitpoints !== calculated.hitPoints) {
+                                ok = false;
+                                console.log(item.item_id + ':' + qualityId + ':' + materialId + ':HITPOINTS NOOOOOOOOOOOOOOOOOT OK');
+                            }
+
+                            if (!ok) {
+                                console.error('('+item.item_name+'|'+materials[materialId]+'|'+quality[qualityId]+')' + 'COMPARE STORED ' + item.item_id + ':' + materialId + ':' + qualityId);
+                                console.log(storedVariation[qualityId][materialId]);
+                                console.log('('+item.item_name+')' + 'COMPARE CALCULATED');
+                                console.log(calculated);
+
+                            }else{
+                                let msg = '';
+                                msg += '['+storedVariation[qualityId][materialId].blunt+'=' +calculated.armorBlunt+']';
+                                msg += '['+storedVariation[qualityId][materialId].heat+'='+ calculated.armorHeat+']';
+                                msg += '['+storedVariation[qualityId][materialId].sharp+'='+ calculated.armorSharp+']';
+                                msg += '['+storedVariation[qualityId][materialId].insulation_cold+'='+ (-calculated.cold) +']';
+                                msg += '['+storedVariation[qualityId][materialId].insulation_heat+'='+ calculated.heat+']';
+                                msg += '['+storedVariation[qualityId][materialId].hitpoints+'='+ calculated.hitPoints+']';
+                                console.log('OK ('+item.item_name+'|'+materials[materialId]+'|'+quality[qualityId]+')' + msg)
+
+                            }
+                            console.log('===============================================');
+                        }
+                    }
+                }
+
+            }).fail(function () {
+                alert('Cannot load data json for item variations.');
+            });
+        });
+    }
+
+
+</script>
+
+
+
+
+<hr>

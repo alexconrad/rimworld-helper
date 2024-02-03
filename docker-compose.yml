@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  apache:
+    build:
+      context: .
+    ports:
+      - "4443:443"
+    hostname: rimworld.local
