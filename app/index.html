@@ -75,6 +75,18 @@
         });
     });
 
+    function icolor(rgb) {
+        rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+        var red = parseInt(rgb[1]);
+        var green = parseInt(rgb[2]);
+        var blue = parseInt(rgb[3]);
+        return [red,green,blue];
+    }
+
+    function toHex(colorArray) {
+        return '#' + colorArray[0].toString(16) + colorArray[1].toString(16) + colorArray[2].toString(16);
+    }
+
 
     function saveLink() {
         //console.log('ops');
@@ -84,12 +96,11 @@
                 parseInt($(this).data('weared-item-id')),
                 parseInt($(this).find('.theMaterial option:selected').val()),
                 parseInt($(this).find('.theQuality option:selected').val()),
+                icolor($(this).find('.theName').css('background-color')),
             ]);
         });
 
-        //console.log(JSON.stringify(data));
         let theData = btoa(JSON.stringify(data));
-        //console.log(btoa(JSON.stringify(data)));
 
         let toCopy = window.location.origin + '' + window.location.pathname + '#' + theData;
 
@@ -848,13 +859,21 @@
 
     }
 
-    function wear(itemData, forceMaterialId = null, forceQualityId = null) {
+    function wear(itemData, forceMaterialId = null, forceQualityId = null, forcedColor = null) {
         let theTr = $('#cloneTr').clone();
         theTr.prop('id', 'wearme' + itemData.item_id);
         theTr.data('weared-item-id', itemData.item_id);
-        theTr.find('.theName').css('background-color', colors[colorIndex]);
+
+        let thisColor = colors[colorIndex];
+        let thisColorHex = colors[colorIndex];
+        if (forcedColor !== null) {
+            thisColor = 'rgb(' + forcedColor[0] + ',' + forcedColor[1] + ',' + forcedColor[2] + ')';
+            thisColorHex = toHex(forcedColor);
+        }
+        theTr.find('.theName').css('background-color', thisColor);
         theTr.find('.theName').find('.text-nowrap').html('<A href="https://rimworldwiki.com/wiki/' + itemData.item_name + '" target="_blank" style="color:black;">' + itemData.item_name + '</A>&nbsp;');
-        theTr.find('.theName').find('.form-control-color').val(colors[colorIndex]).change(function () {
+
+        theTr.find('.theName').find('.form-control-color').val(thisColorHex).change(function () {
             changeColorOfWearItem(itemData, $(this).val());
         });
         theTr.find('.theName').find('img').prop('src', 'images/' + itemData.img_name + '.png');
@@ -873,7 +892,7 @@
                     isAlreadyOccupied = true;
                     return false;
                 }
-                laco.css('fill', colors[colorIndex]).data('occupied-by', itemData.item_id);
+                laco.css('fill', thisColor).data('occupied-by', itemData.item_id);
             });
             if (isAlreadyOccupied) {
                 return false;
@@ -1333,14 +1352,28 @@
 
                 for (let i in theAnchorItems) {
                     let anchorItemId = parseInt(theAnchorItems[i][0]);
+                    let usedColor = null;
+                    if(typeof theAnchorItems[i][3] === 'object') {
+                        usedColor = [
+                            parseInt(theAnchorItems[i][3][0]),
+                            parseInt(theAnchorItems[i][3][1]),
+                            parseInt(theAnchorItems[i][3][2])
+                        ];
+                    }
+
                     wear(
                         JSON.parse(atob($('#theitem' + anchorItemId).data('item-data'))),
                         parseInt(theAnchorItems[i][1]),
                         parseInt(theAnchorItems[i][2]),
+                        [
+                            parseInt(theAnchorItems[i][3][0]),
+                            parseInt(theAnchorItems[i][3][1]),
+                            parseInt(theAnchorItems[i][3][2])
+                        ]
                     );
                 }
             } catch (e) {
-                console.error('Invalid permalink.');
+                console.error('Invalid permalink.'+e.message);
             }
         }
 
