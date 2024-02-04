@@ -7,8 +7,17 @@
 
 
 <style>
+
+    input[type="color"].custom {
+        padding: 0;
+        border: none;
+        height: 1150px;
+        width: 50px;
+        vertical-align: middle;
+    }
+
     .theth {
-        background-color: #e0e0e0 !important;
+        /*background-color: #e0e0e0 !important;*/
         text-align: center;
     }
 
@@ -37,9 +46,9 @@
         top: 0;
         bottom: 0;
         border-radius: 5px;
-        background-image: linear-gradient(to right, lightblue, lightcoral);
+        /*background-image: linear-gradient(to right, lightblue, lightcoral);*/
         /*background-color: #c6aee7;*/
-        background-color: #f0f0f0;
+        /*background-color: #f0f0f0;*/
     }
 
     .slider > .range {
@@ -68,7 +77,7 @@
 
 
     function saveLink() {
-        console.log('ops');
+        //console.log('ops');
         let data = [];
         $('[id^=wearme]').each(function () {
             data.push([
@@ -78,9 +87,9 @@
             ]);
         });
 
-        console.log(JSON.stringify(data));
+        //console.log(JSON.stringify(data));
         let theData = btoa(JSON.stringify(data));
-        console.log(btoa(JSON.stringify(data)));
+        //console.log(btoa(JSON.stringify(data)));
 
         let toCopy = window.location.origin + '' + window.location.pathname + '#' + theData;
 
@@ -102,6 +111,8 @@
 
 
 </script>
+
+
 
 <table class="table table-bordered table-sm">
     <thead>
@@ -143,24 +154,24 @@
                 </g>
             </svg>
         </td>
-        <td rowspan="3" valign="middle" align="center" style="padding: 2px !important;">
+        <td rowspan="3" valign="middle" align="center" style="padding-top: 44px !important;">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="155px" height="332px" viewBox="-0.5 -0.5 201 432">
                 <defs/>
                 <g>
-                    <ellipse cx="100" cy="85" rx="70" ry="85" fill="#fff3f2" stroke="#ae4132" pointer-events="all"/>
-                    <path id="layer_4_3" data-part-name="right_ear" data-occupied-by="" d="M 170 40 Q 200 40 200 80 Q 200 120 170 120 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
+                    <ellipse cx="100" cy="85" rx="70" ry="85" fill="#fff3f2" stroke="#c0c0c0" pointer-events="all"/>
+                    <path id="layer_4_3" data-part-name="right_ear" data-occupied-by="" d="M 170 40 Q 200 40 200 80 Q 200 120 170 120 Z" fill="rgb(255, 255, 255)" stroke="#c0c0c0"
                           stroke-miterlimit="10" pointer-events="all"/>
-                    <path id="layer_4_2" data-part-name="left_ear" data-occupied-by="" d="M 0 40 Q 30 40 30 80 Q 30 120 0 120 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
+                    <path id="layer_4_2" data-part-name="left_ear" data-occupied-by="" d="M 0 40 Q 30 40 30 80 Q 30 120 0 120 Z" fill="rgb(255, 255, 255)" stroke="#c0c0c0"
                           stroke-miterlimit="10" transform="rotate(-180,15,80)" pointer-events="all"/>
-                    <ellipse id="layer_4_12" data-part-name="left_eye" data-occupied-by="" cx="70" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
+                    <ellipse id="layer_4_12" data-part-name="left_eye" data-occupied-by="" cx="70" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="#c0c0c0"
                              pointer-events="all"/>
-                    <ellipse id="layer_4_13" data-part-name="right_eye" data-occupied-by="" cx="130" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
+                    <ellipse id="layer_4_13" data-part-name="right_eye" data-occupied-by="" cx="130" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="#c0c0c0"
                              pointer-events="all"/>
-                    <path id="layer_4_14" data-partn-name="nose" data-occupied-by="" d="M 85 80 L 115 95 L 85 110 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
+                    <path id="layer_4_14" data-partn-name="nose" data-occupied-by="" d="M 85 80 L 115 95 L 85 110 Z" fill="rgb(255, 255, 255)" stroke="#c0c0c0" stroke-miterlimit="10"
                           transform="rotate(-90,100,95)" pointer-events="all"/>
-                    <path id="layer_4_15" data-partn-name="jaw" data-occupied-by="" d="M 80 90 Q 120 90 120 150 Q 120 210 80 210 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
+                    <path id="layer_4_15" data-partn-name="jaw" data-occupied-by="" d="M 80 90 Q 120 90 120 150 Q 120 210 80 210 Z" fill="rgb(255, 255, 255)" stroke="#c0c0c0"
                           stroke-miterlimit="10" transform="rotate(90,100,150)" pointer-events="all"/>
-                    <path id="layer_4_1" data-partn-name="head" data-occupied-by="" d="M 80 -40 Q 120 -40 120 20 Q 120 80 80 80 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
+                    <path id="layer_4_1" data-partn-name="head" data-occupied-by="" d="M 80 -40 Q 120 -40 120 20 Q 120 80 80 80 Z" fill="rgb(255, 255, 255)" stroke="#c0c0c0"
                           stroke-miterlimit="10" transform="rotate(-90,100,20)" pointer-events="all"/>
                     <rect id="layer_4_5" data-partn-name="neck" data-occupied-by="" x="75" y="170" width="50" height="30" rx="4.5" ry="4.5" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
                           pointer-events="all"/>
@@ -181,24 +192,24 @@
                 </g>
             </svg>
         </td>
-        <td rowspan="3" valign="middle" align="center" style="padding: 2px !important;">
+        <td rowspan="3" valign="middle" align="center" style="padding-top: 44px !important;">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="155px" height="332px" viewBox="-0.5 -0.5 201 432">
                 <defs/>
                 <g>
-                    <ellipse cx="100" cy="85" rx="70" ry="85" fill="#fff3f2" stroke="#ae4132" pointer-events="all"/>
-                    <path id="layer_3_3" data-part-name="right_ear" data-occupied-by="" d="M 170 40 Q 200 40 200 80 Q 200 120 170 120 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
+                    <ellipse cx="100" cy="85" rx="70" ry="85" fill="#fff3f2" stroke="#c0c0c0" pointer-events="all"/>
+                    <path id="layer_3_3" data-part-name="right_ear" data-occupied-by="" d="M 170 40 Q 200 40 200 80 Q 200 120 170 120 Z" fill="rgb(255, 255, 255)" stroke="#c0c0c0"
                           stroke-miterlimit="10" pointer-events="all"/>
-                    <path id="layer_3_2" data-part-name="left_ear" data-occupied-by="" d="M 0 40 Q 30 40 30 80 Q 30 120 0 120 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
+                    <path id="layer_3_2" data-part-name="left_ear" data-occupied-by="" d="M 0 40 Q 30 40 30 80 Q 30 120 0 120 Z" fill="rgb(255, 255, 255)" stroke="#c0c0c0"
                           stroke-miterlimit="10" transform="rotate(-180,15,80)" pointer-events="all"/>
-                    <ellipse id="layer_3_12" data-part-name="left_eye" data-occupied-by="" cx="70" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
+                    <ellipse id="layer_3_12" data-part-name="left_eye" data-occupied-by="" cx="70" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="#c0c0c0"
                              pointer-events="all"/>
-                    <ellipse id="layer_3_13" data-part-name="right_eye" data-occupied-by="" cx="130" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
+                    <ellipse id="layer_3_13" data-part-name="right_eye" data-occupied-by="" cx="130" cy="70" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="#c0c0c0"
                              pointer-events="all"/>
-                    <path id="layer_3_14" data-partn-name="nose" data-occupied-by="" d="M 85 80 L 115 95 L 85 110 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
+                    <path id="layer_3_14" data-partn-name="nose" data-occupied-by="" d="M 85 80 L 115 95 L 85 110 Z" fill="rgb(255, 255, 255)" stroke="#c0c0c0" stroke-miterlimit="10"
                           transform="rotate(-90,100,95)" pointer-events="all"/>
-                    <path id="layer_3_15" data-partn-name="jaw" data-occupied-by="" d="M 80 90 Q 120 90 120 150 Q 120 210 80 210 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
+                    <path id="layer_3_15" data-partn-name="jaw" data-occupied-by="" d="M 80 90 Q 120 90 120 150 Q 120 210 80 210 Z" fill="rgb(255, 255, 255)" stroke="#c0c0c0"
                           stroke-miterlimit="10" transform="rotate(90,100,150)" pointer-events="all"/>
-                    <path id="layer_3_1" data-partn-name="head" data-occupied-by="" d="M 80 -40 Q 120 -40 120 20 Q 120 80 80 80 Z" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
+                    <path id="layer_3_1" data-partn-name="head" data-occupied-by="" d="M 80 -40 Q 120 -40 120 20 Q 120 80 80 80 Z" fill="rgb(255, 255, 255)" stroke="#c0c0c0"
                           stroke-miterlimit="10" transform="rotate(-90,100,20)" pointer-events="all"/>
                     <rect id="layer_3_5" data-partn-name="neck" data-occupied-by="" x="75" y="170" width="50" height="30" rx="4.5" ry="4.5" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
                           pointer-events="all"/>
@@ -225,7 +236,6 @@
                 <th style="width: 0px;"></th>
                 <th>Item Name</th>
                 <th>Mass</th>
-                <td>Cost</td>
                 <!--
                                 <th>HP</th>
                                 <th>Cold</th>
@@ -242,6 +252,7 @@
                 <th id="max_hit_points_factor" class="theOrderMaterialsBy" data-selected="true">HP</th>
                 <th id="insulation_cold" class="theOrderMaterialsBy" data-selected="true">iCold</th>
                 <th id="insulation_heat" class="theOrderMaterialsBy" data-selected="true">iHeat</th>
+                <th>Cost</th>
                 </thead>
                 <tbody id="wearContents">
 
@@ -251,9 +262,9 @@
                     <td colspan="17">
                         <table class="table table-sm" style="border-width: 0;">
                             <tr>
-                                <th align="right" class="theth" style="font-size: 12px;">-270&deg;
-                                <td>
-                                <td style="width: 100%;padding: 0;margin: 0" valign="middle">
+                                <th align="right" class="theth" style="font-size: 12px;background-color: lightblue !important;">-270&deg;
+                                </th>
+                                <td style="width: 100%;padding: 0;margin: 0;background-image: linear-gradient(to right, lightblue, lightcoral);" valign="middle">
                                     <div class="slider">
                                         <div class="track"></div>
                                         <div id="theRange" class="range" style="left: 11%; right: 41%;">
@@ -263,9 +274,14 @@
                                         </div>
                                     </div>
                                 </td>
-                                <th class="theth" style="font-size: 12px;">+270&deg;</th>
+                                <th class="theth" style="font-size: 12px;background-color: lightcoral !important;">+270&deg;</th>
                             </tr>
                         </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="17" id="totalCost">
+
                     </td>
                 </tr>
                 </tfoot>
@@ -273,18 +289,64 @@
             <br>
 
         </td>
-        <td rowspan="3" style="min-width: 370px">
-            <table class="table table-sm table-bordered theResult" style="font-size: 12px !important;border-color: #f0f0f0;">
-                <thead>
-                <th>&nbsp;</th>
-                <th>HP</th>
-                <th>Sharp</th>
-                <th>Blunt</th>
-                <th>Heat</th>
-                </thead>
-                <tbody id="resultBodyParts">
-                </tbody>
-            </table>
+        <td rowspan="3" style="min-width: 470px">
+
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Numbers</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Visual</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                    <table class="table table-sm table-bordered theResult" style="font-size: 12px !important;border-color: #f0f0f0;">
+                        <thead>
+                        <th>&nbsp;</th>
+                        <th>HP</th>
+                        <th>Sharp</th>
+                        <th>Blunt</th>
+                        <th>Heat</th>
+                        </thead>
+                        <tbody id="resultBodyParts">
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                    <table style="font-size: 12px !important;border-bottom-width:0 !important;border-color: red; border-width: 0 !important;padding: 0 !important;border-collapse: collapse !important;border-spacing: 0 !important;width: 100%;">
+                        <thead>
+                        <th style="height: 20px;font-size: 12px;color: black;font-weight: bold;padding-bottom: 5px;width: 100px;"><a href="https://rimworldwiki.com/wiki/Table_of_Human_Body_Part_Groups" target="_blank">Body groups</a></th>
+                        <th style="height: 20px;font-size: 12px;color: black;font-weight: bold;padding-bottom: 5px;">Protection</th>
+                        </thead>
+                        <tbody id="resultVisualBodyParts">
+<!--
+                        <tr>
+                            <td align="right" style="padding-right: 10px;">UpperHead</td>
+                            <td style="background: linear-gradient(to right, #c0c0c0 0% 50%, blue 50% 60%, green 60% 100%);width: 370px;">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" style="width: 100px;height: 10px;" border="0">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>UpperHead</td>
+                            <td style="background: linear-gradient(to right, #c0c0c0 0% 30%, blue 30% 70%, green 70% 100%);width: 370px;">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" style="width: 100px;height: 10px;" border="0">
+                            </td>
+                        </tr>
+-->
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">3</div>
+                <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">4</div>
+            </div>
+
+
+
         </td>
     </tr>
     <tr>
@@ -344,7 +406,7 @@
 </div>
 
 <span style="display: none" id="toCloneItem" data-item-id="" data-coverage-ids="" data-layer="" data-item-data="">
-    <span class="btn btn-light btn-sm text-nowrap"><img src="SRC" width="24" height="24" alt="ITEM NAME"/><span class="text-nowrap">ITEM NAME</span></span>
+    <span class="btn btn-light btn-sm text-nowrap"><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="24" height="24" alt="ITEM NAME"/><span class="text-nowrap">ITEM NAME</span></span>
 </span>
 
 <table style="display: none">
@@ -352,13 +414,14 @@
         <td valign="middle" align="center">
             <a class="btn btn-sm undressMe" href="#" role="button" style="background-color: #FF5555;font-size: 10px;color:white;font-weight: bold;">X</a>
         </td>
-        <td class="theName" style="background-color: aqua;" valign="middle">
-        <span style="font-size: 12px !important;margin: 0;padding: 1px"><img src="THESRC" width="24" height="24" alt="ITEM NAME"/>
-            <span class="text-nowrap">ITEM NAME</span>
-        </span>
+        <td class="theName" style="background-color: aqua;white-space: nowrap;" valign="middle">
+            <table cellpadding="0" cellspacing="0" border="0" style="width: 100%"><tr>
+                <td><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" width="24" height="24" alt="ITEM NAME"/></td>
+                <td><span class="text-nowrap" style="white-space: nowrap !important;font-size: 12px;">ITEM NAME</span></td>
+                <td align="right"><input type="color" class="form-control form-control-color" value="#FF0000" style="width:12px;height:12px;padding:0;border-width: 2px;border-color:black;"></td>
+            </tr></table>
         </td>
-        <td valign="middle" align="right" class="theMass" data-mass=""></td>
-        <td valign="middle" align="right" class="theCost"></td>
+        <td valign="middle" align="right" class="theMass forBodyGroupHover" data-mass="" style="white-space: nowrap;"></td>
         <!--
             <td valign="middle" align="right" class="theHitpoints" data-hitpoints=""></td>
             <td valign="middle" align="center" class="theCold" data-cold=""></td>
@@ -367,12 +430,12 @@
             <td valign="middle" align="right" class="theFactor_blunt" data-factor_blunt=""></td>
             <td valign="middle" align="right" class="theFactor_heat" data-factor_heat=""></td>
         -->
-        <td>
-            <select class="form-control form-control-sm theMaterial" style="font-size: 12px !important;">
+        <td class="forBodyGroupHover">
+            <select class="form-control form-control-sm theMaterial" style="font-size: 12px !important;width: 120px;">
             </select>
         </td>
-        <td>
-            <select class="form-control form-control-sm theQuality" style="font-size: 12px !important;">
+        <td class="forBodyGroupHover">
+            <select class="form-control form-control-sm theQuality" style="font-size: 12px !important;width: 90px;">
                 <option value="1" class="itq1" data-quality-variation="">Awful</option>
                 <option value="2" class="itq2" data-quality-variation="">Poor</option>
                 <option value="3" class="itq3" data-quality-variation="">Normal</option>
@@ -383,12 +446,13 @@
             </select>
 
         </td>
-        <td class="materialArmorSharp"></td>
-        <td class="materialArmorBlunt"></td>
-        <td class="materialArmorHeat"></td>
-        <td class="materialHP"></td>
-        <td class="materialCold"></td>
-        <td class="materialHeat"></td>
+        <td class="materialArmorSharp forBodyGroupHover"></td>
+        <td class="materialArmorBlunt forBodyGroupHover"></td>
+        <td class="materialArmorHeat forBodyGroupHover"></td>
+        <td class="materialHP forBodyGroupHover"></td>
+        <td class="materialCold forBodyGroupHover"></td>
+        <td class="materialHeat forBodyGroupHover"></td>
+        <td valign="middle" class="theCost forBodyGroupHover"></td>
     </tr>
     <tr id="cloneBodyGroup">
         <th class="theName" style="width: 1px;">Torso</th>
@@ -396,6 +460,15 @@
         <td class="theArmorSharp" align="right"></td>
         <td class="theArmorBlunt" align="right"></td>
         <td class="theArmorHeat" align=right></td>
+
+    </tr>
+    <!--background: linear-gradient(to right, red 0% 33%, yellow 33% 66%, green 66% 100%);-->
+    <tr id="cloneVisualBodyGroup">
+        <td class="theName" align="right" style="padding-right: 10px;">Name</td>
+        <td class="theProtection" style="width: 370px;" align="right">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" style="width: 100px;height: 10px;" border="0">
+        </td>
+    </tr>
 
     </tr>
 
@@ -421,7 +494,16 @@
         "12": "GOLD"
     };
 
-    let isMaterialCostId = 1;
+    let isMaterialCostId = "1";
+
+    //dont judge
+    let costsCommonWithMaterial = {
+        "32":"3", //plasteel
+        "34":"4", //steel
+        "8":"5", //cloth
+        "35":"6",//uranium
+        "31":"12", //gold
+    };
 
 
 
@@ -438,10 +520,13 @@
         "10": "Feet"
     };
 
+    let bodyGroupOrder = [2,3,1,4,5,6,7,8,9,10];
+
+
     let bodyGroupContains = {
-        "1": [4, 5], //clavicles, sternum, ribs, pelvis, spine, stomach, heart, lungs, kidneys, liver, neck
         "2": [1, 2, 3], //head, skull, brain, ears
         "3": [1, 2, 3, 12, 13, 14, 15], //head, skull, brain, eyes, ears, nose, jaw
+        "1": [4, 5], //clavicles, sternum, ribs, pelvis, spine, stomach, heart, lungs, kidneys, liver, neck
         "4": [6, 8], //shoulders
         "5": [7, 9], //arms, hands, humeri, radii
         "6": [7, 9], //hands, fingers.
@@ -502,7 +587,6 @@
         "10": "Dog leather",
         "11": "Elephant leather",
         "12": "Foxfur",
-        "31": "Gold",
         "13": "Guinea pig fur",
         "14": "Heavy fur",
         "15": "Human leather",
@@ -515,16 +599,17 @@
         "22": "Patchleather",
         "23": "Pigskin",
         "24": "Plainleather",
-        "32": "Plasteel",
         "25": "Rhinoceros leather",
         "26": "Sheep wool",
-        "33": "Silver",
-        "34": "Steel",
         "27": "Synthread",
         "28": "Thrumbofur",
-        "35": "Uranium",
         "29": "Wolfskin",
-        "36": "Wood"
+        "31": "Gold",
+        "32": "Plasteel",
+        "33": "Silver",
+        "34": "Steel",
+        "35": "Uranium",
+        "36": "Wood",
     };
 
     let isNoMaterialId = 30;
@@ -560,7 +645,7 @@
     }
 
 
-    let colors = [
+    /*let colors = [
         //'rgb(203,111,86)',
         //'rgb(52,54,77)',
         //'rgb(79,100,103)',
@@ -574,19 +659,24 @@
         'rgb(92,95,114)',
         'rgb(113,131,133)',
         'rgb(140,172,157)',
-    ];
+    ];*/
 
-    colors = [
-        '#C3E2C2',
-        '#EAECCC',
-        '#CD8D7A',
-        '#DBCC95',
-        '#F1D4E5',
-        'rgb(94,155,236)',
-        'rgb(171,147,235)',
-    ];
+    let colors = ["#e1a99a","#848693","#94a2a3","#aac2b5","#d78c79","#5c5f72","#718385","#8cac9d"];
+
 
     let colorIndex = 0;
+
+    //because id order "didn't matter" making the data :(
+    let mistakeLayer = {
+        //"5":"EYES",
+        "1":"HEADGEAR",
+        "4":"MIDDLE",
+        "3":"OUTER",
+        "2":"SKIN",
+    };
+
+    let orderLayer = ["2","1","4","3"];
+
 
     // when opening the page with file:// using below import will not work
     import itemsCore from "./data/items_core.json" assert {type: "json"};
@@ -600,14 +690,15 @@
     function undressItem(itemId) {
         colorIndex--;
 
-        let covered = $('#theitem' + itemId).data('coverage-ids').split(',');
-        let layers = $('#theitem' + itemId).data('layer').split(',');
+        let iid = $('#theitem' + itemId);
+        let covered = iid.data('coverage-ids').split(',');
+        let layers = iid.data('layer').split(',');
         layers.forEach(function (la) {
             covered.forEach(function (co) {
-                $('#layer_' + la + '_' + co).css('fill', 'rgb(255,255,255)');
-                $('#layer_' + la + '_' + co).css('stroke-width', '1');
-                $('#layer_' + la + '_' + co).data('occupied-by', '');
-
+                $('#layer_' + la + '_' + co)
+                    .css('fill', 'rgb(255,255,255)')
+                    .css('stroke-width', '1')
+                    .data('occupied-by', '');
             });
         });
 
@@ -616,6 +707,7 @@
         $('#wearme' + itemId).remove();
 
         calcConfyTemp();
+        showTotalCost();
         calculateResult();
     }
 
@@ -629,6 +721,69 @@
         });
 
         showConfy(mathStuff(confyCold.toFixed(3), 1, 1, 10, 1, 10), mathStuff(confyHeat.toFixed(3), 1, 1, 10, 1, 10));
+    }
+
+    String.prototype.ucfirst = function() {
+        return this.charAt(0).toUpperCase() + this.substr(1);
+    };
+
+    function showTotalCost() {
+
+        let totalMaterials = {};
+        let totalCosts = {};
+
+        $('[id^=wearme]').each(function () {
+            let wearedItemId = $(this).data('weared-item-id')
+            for (let costId in itemCost[wearedItemId]) {
+                if (costId === isMaterialCostId) {
+                    $('#wearme' + wearedItemId + ' .theMaterial option:selected').val()
+                    let materialId = $(this).find('.theMaterial option:selected').val();
+
+                    if (materialId in costsCommonWithMaterial) {
+                        let delegatedCostId = costsCommonWithMaterial[materialId];
+                        if (!(delegatedCostId in totalCosts)) {
+                            totalCosts[delegatedCostId] = new Decimal(0);
+                        }
+                        totalCosts[delegatedCostId] = totalCosts[delegatedCostId].plus(itemCost[wearedItemId][costId]);
+                    }else {
+                        if (!(materialId in totalMaterials)) {
+                            totalMaterials[materialId] = new Decimal(0);
+                        }
+                        totalMaterials[materialId] = totalMaterials[materialId].plus(itemCost[wearedItemId][costId]);
+                    }
+
+                } else {
+                    if (!(costId in totalCosts)) {
+                        totalCosts[costId] = new Decimal(0);
+                    }
+                    totalCosts[costId] = totalCosts[costId].plus(itemCost[wearedItemId][costId]);
+                }
+            }
+        });
+
+        let totalCost = $('#totalCost');
+        totalCost.text('');
+        for (let materialId in totalMaterials) {
+            totalCost.append($('<img>', {
+                src: 'images/material_' + materialId + '.png',
+                width: 18,
+                height: 18,
+                title: materials[materialId]
+            }));
+            totalCost.append(materials[materialId]+'&nbsp;');
+            totalCost.append('x'+totalMaterials[materialId].toFixed(0)+'<br>');
+        }
+        for (let costId in totalCosts) {
+            totalCost.append($('<img>', {
+                src: 'images/cost_' + costId + '.png',
+                width: 18,
+                height: 18,
+                title: costs[costId]
+            }));
+            totalCost.append(costs[costId].toLowerCase().ucfirst()+'&nbsp;');
+            totalCost.append('x'+totalCosts[costId].toFixed(0)+'<br>');
+        }
+
     }
 
     function grayItemsThatCannotBeWearedAnyMore(removingItemId) {
@@ -678,12 +833,30 @@
         });
     }
 
+    function changeColorOfWearItem(itemData, toColor) {
+        $('#wearme'+itemData.item_id+' .theName').css('background-color', toColor);
+
+        calculateResult();
+
+        let covered = itemData.coverage.split(',');
+        let layers = itemData.layer.split(',');
+        layers.forEach(function (la) {
+            covered.forEach(function (co) {
+                $('#layer_' + la + '_' + co).css('fill', toColor);
+            });
+        });
+
+    }
+
     function wear(itemData, forceMaterialId = null, forceQualityId = null) {
         let theTr = $('#cloneTr').clone();
         theTr.prop('id', 'wearme' + itemData.item_id);
         theTr.data('weared-item-id', itemData.item_id);
         theTr.find('.theName').css('background-color', colors[colorIndex]);
-        theTr.find('.theName').find('span').find('span').html('<A href="https://rimworldwiki.com/wiki/' + itemData.item_name + '" target="_blank">' + itemData.item_name + '</A>');
+        theTr.find('.theName').find('.text-nowrap').html('<A href="https://rimworldwiki.com/wiki/' + itemData.item_name + '" target="_blank" style="color:black;">' + itemData.item_name + '</A>&nbsp;');
+        theTr.find('.theName').find('.form-control-color').val(colors[colorIndex]).change(function () {
+            changeColorOfWearItem(itemData, $(this).val());
+        });
         theTr.find('.theName').find('img').prop('src', 'images/' + itemData.img_name + '.png');
 
         theTr.find('.undressMe').click(function () {
@@ -695,12 +868,12 @@
         let isAlreadyOccupied = false;
         layers.forEach(function (la) {
             covered.forEach(function (co) {
-                if ($('#layer_' + la + '_' + co).data('occupied-by') !== '') {
+                let laco = $('#layer_' + la + '_' + co);
+                if (laco.data('occupied-by') !== '') {
                     isAlreadyOccupied = true;
                     return false;
                 }
-                $('#layer_' + la + '_' + co).css('fill', colors[colorIndex]);
-                $('#layer_' + la + '_' + co).data('occupied-by', itemData.item_id);
+                laco.css('fill', colors[colorIndex]).data('occupied-by', itemData.item_id);
             });
             if (isAlreadyOccupied) {
                 return false;
@@ -711,7 +884,8 @@
             if (!confirm('Already occupied, proceed ?')) {
                 return false;
             }
-            alert('OK but understand that things will go wrong from this point on.');
+            alert('No.');
+            return false;
         }
 
         theTr.find('.theName').mouseover(function () {
@@ -732,14 +906,7 @@
 
         theTr.find('.theMass').text((parseFloat(itemData.mass) / 100) + ' kg');
 
-        console.log(itemCost[itemData.item_id]);
-        let theCostText = '';
-        for (let costId in itemCost[itemData.item_id]) {
-            theCostText += costs[costId]+':'+itemCost[itemData.item_id][costId];
-            //theTr.find('.theCost').text(theCostText);
-        }
-
-        
+        // Factors removed from the list because the occupied a lot of space.
         /*
         theTr.find('.theHitpoints').text(parseInt(itemData.hitpoints));
         if (itemData.cold !== null ) {
@@ -776,7 +943,6 @@
         })
 
         let useQuality = 3;
-        //[id^=wearme]
         let lastUsedQuality = $('[id^=wearme] .theQuality:last option:selected').val();
         if (lastUsedQuality !== undefined) {
             useQuality = lastUsedQuality;
@@ -794,6 +960,28 @@
 
         $('#wearContents').append(theTr);
 
+        for (let costId in itemCost[itemData.item_id]) {
+            if (costId === isMaterialCostId) {
+                theTr.find('.theCost').append($('<img>', {
+                    class: 'theMaterialPic',
+                    src: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=',
+                    width: 16,
+                    height: 16,
+                    title: 'Material'
+                }));
+                theTr.find('.theCost').append('x'+itemCost[itemData.item_id][costId]);
+
+            } else {
+                theTr.find('.theCost').append($('<img>', {
+                    src: 'images/cost_' + costId + '.png',
+                    width: 16,
+                    height: 16,
+                    title:costs[costId]
+                }));
+                theTr.find('.theCost').append('x'+itemCost[itemData.item_id][costId]);
+            }
+        }
+
         showItemVariation(
             itemData.item_id,
             $('#wearme' + itemData.item_id + ' .theMaterial option:selected').val(),
@@ -801,15 +989,16 @@
         );
 
         calcConfyTemp();
+        showTotalCost();
 
         grayItemsThatCannotBeWearedAnyMore(-1);
 
     }
 
     function onChangeMaterial(itemId, materialId) {
-        //console.log("SQ:"+$('#wearme'+itemId+' .theQuality option:selected').val()+" : CHANGED MATERIAL  ON ITEM ID "+itemId+ " material "+materialId+":"+$('#wearme'+itemId+' .theMaterial option[value='+materialId+']').text());
         showItemVariation(itemId, materialId, $('#wearme' + itemId + ' .theQuality option:selected').val());
         calcConfyTemp();
+        showTotalCost();
     }
 
     function onChangeQuality(itemId, qualityId) {
@@ -851,6 +1040,8 @@
 
         let calculated = calculateItemVariation(itemId, materialId, qualityId);
 
+        $('#wearme' + itemId + ' .theMaterialPic').prop('src', 'images/material_'+materialId+'.png').prop('title',materials[materialId]);
+
         $('#wearme' + itemId + ' .materialArmorSharp').text(calculated.armorSharp);
         $('#wearme' + itemId + ' .materialArmorBlunt').text(calculated.armorBlunt);
         $('#wearme' + itemId + ' .materialArmorHeat').text(calculated.armorHeat);
@@ -879,9 +1070,10 @@
             let layers = $(this).data('layer').split(',');
             layers.forEach(function (la) {
                 covered.forEach(function (co) {
-                    $('#layer_' + la + '_' + co).css('stroke-width', '8');
-                    if ($('#layer_' + la + '_' + co).data('occupied-by') !== '') {
-                        $('#layer_' + la + '_' + co).css('stroke', '#FF5555');
+                    let laco = $('#layer_' + la + '_' + co);
+                    laco.css('stroke-width', '8');
+                    if (laco.data('occupied-by') !== '') {
+                        laco.css('stroke', '#FF5555');
                     }
 
                 });
@@ -899,8 +1091,7 @@
             let layers = $(this).data('layer').split(',');
             layers.forEach(function (la) {
                 covered.forEach(function (co) {
-                    $('#layer_' + la + '_' + co).css('stroke-width', '1');
-                    $('#layer_' + la + '_' + co).css('stroke', '#000000');
+                    $('#layer_' + la + '_' + co).css('stroke-width', '1').css('stroke', '#000000');
                 });
             });
         });
@@ -922,6 +1113,7 @@
 
         let byBodyGroupWornItems = [];
 
+        //make an array with items by body group
         $('[id^=wearme]').each(function () {
             let wearingItem = JSON.parse(atob($('#theitem' + $(this).data('weared-item-id')).data('item-data')));
             wearingItem.coverage = wearingItem.coverage.split(',');
@@ -933,20 +1125,51 @@
                         "ArmorSharp": $(this).find('.materialArmorSharp').text(),
                         "ArmorBlunt": $(this).find('.materialArmorBlunt').text(),
                         "ArmorHeat": $(this).find('.materialArmorHeat').text(),
+                        "ItemId": $(this).data('weared-item-id'),
+                        "Layers": wearingItem.layer.split(','),
                     };
                 }
             }
             byBodyGroupWornItems.push(wearingItemBodyGroupsKeys);
         });
 
+        //aggregate data by bodygroup
+        let bodyGroupProtection = {};
         for (let idx in byBodyGroupWornItems) {
             for (let xBodyGroupId in byBodyGroupWornItems[idx]) {
+
+                if (!(xBodyGroupId in bodyGroupProtection)) {
+                    bodyGroupProtection[xBodyGroupId] = {};
+                }
+
+                let theFreakingLayerOrder = 0;
+                byBodyGroupWornItems[idx][xBodyGroupId]['Layers'].forEach(function (mistakeLayId) {
+                    theFreakingLayerOrder += 10** orderLayer.indexOf(mistakeLayId);
+                });
+
+                 if (!(theFreakingLayerOrder in bodyGroupProtection[xBodyGroupId])) {
+                     bodyGroupProtection[xBodyGroupId][theFreakingLayerOrder] = {};
+                 }
+
+                 //because you can wear face mask and a cowboy hat
+                 bodyGroupProtection[xBodyGroupId][theFreakingLayerOrder][byBodyGroupWornItems[idx][xBodyGroupId]['ItemId']] = byBodyGroupWornItems[idx][xBodyGroupId]['HP'];
+
                 bodyGroupResult[xBodyGroupId]['HP'] = (bodyGroupResult[xBodyGroupId]['HP']).plus(byBodyGroupWornItems[idx][xBodyGroupId]['HP']);
                 bodyGroupResult[xBodyGroupId]['ArmorSharp'] = (bodyGroupResult[xBodyGroupId]['ArmorSharp']).plus(byBodyGroupWornItems[idx][xBodyGroupId]['ArmorSharp']);
                 bodyGroupResult[xBodyGroupId]['ArmorBlunt'] = (bodyGroupResult[xBodyGroupId]['ArmorBlunt']).plus(byBodyGroupWornItems[idx][xBodyGroupId]['ArmorBlunt']);
                 bodyGroupResult[xBodyGroupId]['ArmorHeat'] = (bodyGroupResult[xBodyGroupId]['ArmorHeat']).plus(byBodyGroupWornItems[idx][xBodyGroupId]['ArmorHeat']);
             }
         }
+
+        //calculate the maxHitPoints of a body group (to be used in percentages of visuals
+        let maxHitPoints = 0;
+        for (let yBodyGroupId in bodyGroupResult) {
+            let thisHp = Math.round(bodyGroupResult[yBodyGroupId]['HP'].toFixed(3) * 100) / 100;
+            if (thisHp > maxHitPoints) {
+                maxHitPoints = thisHp;
+            }
+        }
+
 
         for (let yBodyGroupId in bodyGroupResult) {
 
@@ -965,13 +1188,59 @@
                 }
             }
 
+            //VISUALS
+            let startPercentage = new Decimal(0);
+            let gradientParts = [];
+            let lastPercentage = Decimal(0);
+            let theItemsIds = [];
+
+            for (let theFreakingOrder in bodyGroupProtection[yBodyGroupId]) {
+
+                for (let theLayeredItemId in bodyGroupProtection[yBodyGroupId][theFreakingOrder]) {
+
+                    let dataHp = new Decimal(bodyGroupProtection[yBodyGroupId][theFreakingOrder][theLayeredItemId]);
+
+                    let a = dataHp.dividedBy(maxHitPoints).times(100).plus(startPercentage.toFixed(0));
+                    lastPercentage = a;
+                    let thisPercentage = Math.round(a.toFixed(0));
+                    let colorOf = $('#wearme' + theLayeredItemId + ' .theName').css('background-color');
+                    gradientParts.push(colorOf + ' ' + startPercentage.toFixed(0) + '% ' + thisPercentage + '%');
+                    theItemsIds.push(theLayeredItemId);
+
+                    startPercentage = a;
+                }
+            }
+
+            if (lastPercentage.lessThan(100)) {
+                gradientParts.push('white ' + Math.round(lastPercentage.toFixed(0)) + '% 100%');
+            }
+
+            $('#bodyVisualGroup'+yBodyGroupId+' .theProtection')
+                .css('background','linear-gradient(to right,' + gradientParts.join(', ')+')')
+                .text(showValues['.theHitPoints'])
+                .mouseover(function () {
+                    $('#bodyVisualGroup'+yBodyGroupId+' .theName').css('color', 'red');
+                    theItemsIds.forEach(function (item) {
+                        $('#wearme'+item+' .forBodyGroupHover, #wearme'+item+' .theQuality, #wearme'+item+' .theMaterial').css('background-color',
+                            $('#wearme'+item+' .theName').css('background-color')
+                        );
+                    });
+                })
+                .mouseout(function () {
+                    $('#bodyVisualGroup'+yBodyGroupId+' .theName').css('color', 'black');
+                    theItemsIds.forEach(function (item) {
+                        $('#wearme'+item+' .forBodyGroupHover, #wearme'+item+' .theQuality, #wearme'+item+' .theMaterial').css('background-color', 'white');
+                    });
+            });
+
         }
     }
 
 
     $(document).ready(function () {
 
-        for (let key in bodyGroups) {
+        //for (let key in bodyGroups) {
+        bodyGroupOrder.forEach(function (key) {
 
             let clonedItem = $('#cloneBodyGroup').clone();
             clonedItem.prop('id', 'bodyGroup' + key);
@@ -991,12 +1260,28 @@
 
             clonedItem.find('.theName').mouseout(function () {
                 $(theSelector.join(',')).css('stroke-width', '1');
-            })
+            });
 
 
             $('#resultBodyParts').append(clonedItem)
 
-        }
+            let clonedItem2 = $('#cloneVisualBodyGroup').clone();
+            clonedItem2.prop('id','bodyVisualGroup'+key);
+            clonedItem2.find('.theName').text(bodyGroups[key]).css('font-size', '12px').css('font-weight', 'bold');
+            clonedItem2.find('.theName').mouseover(function () {
+                $(theSelector.join(',')).css('stroke-width', '8');
+            });
+
+            clonedItem2.find('.theName').mouseout(function () {
+                $(theSelector.join(',')).css('stroke-width', '1');
+            });
+
+
+
+            $('#resultVisualBodyParts').append(clonedItem2);
+
+        });
+
 
 
         itemsCore.forEach(function (item) {
@@ -1044,7 +1329,7 @@
         if (hash !== '') {
             try {
                 let theAnchorItems = JSON.parse(atob(hash));
-                console.log(theAnchorItems);
+                //console.log(theAnchorItems);
 
                 for (let i in theAnchorItems) {
                     let anchorItemId = parseInt(theAnchorItems[i][0]);
