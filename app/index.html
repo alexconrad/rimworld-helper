@@ -763,25 +763,7 @@
         /* "Legendary" */ "7": 1.8
     }
 
-
-    /*let colors = [
-        //'rgb(203,111,86)',
-        //'rgb(52,54,77)',
-        //'rgb(79,100,103)',
-        //'rgb(111,153,133)',
-        'rgb(225,169,154)',
-        'rgb(132,134,147)',
-        'rgb(148,162,163)',
-        'rgb(170,194,181)',
-
-        'rgb(215,140,121)',
-        'rgb(92,95,114)',
-        'rgb(113,131,133)',
-        'rgb(140,172,157)',
-    ];*/
-
     let colors = ["#e1a99a","#848693","#94a2a3","#aac2b5","#d78c79","#5c5f72","#718385","#8cac9d"];
-
 
     let colorIndex = 0;
 
@@ -1202,7 +1184,6 @@
                     if (laco.data('occupied-by') !== '') {
                         laco.css('stroke', '#FF5555');
                     }
-
                 });
             });
 
@@ -1596,11 +1577,7 @@
                         JSON.parse(atob($('#theitem' + anchorItemId).data('item-data'))),
                         parseInt(theAnchorItems[i][1]),
                         parseInt(theAnchorItems[i][2]),
-                        [
-                            parseInt(theAnchorItems[i][3][0]),
-                            parseInt(theAnchorItems[i][3][1]),
-                            parseInt(theAnchorItems[i][3][2])
-                        ]
+                        usedColor
                     );
                 }
             } catch (e) {
@@ -1608,15 +1585,11 @@
             }
         }
 
-
         //number verifications, please ignore
         //verifyCalc(itemsCore);
         //verifyCalc(itemsBiotech);
         //verifyCalc(itemsIdeology);
         //verifyCalc(itemsRoyality);
-
-
-        //document.querySelector("#theCopy").addEventListener("click", copy);
 
     }); //ready
 
